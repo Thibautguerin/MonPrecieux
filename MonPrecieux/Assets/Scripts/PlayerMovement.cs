@@ -19,11 +19,25 @@ public class PlayerMovement : MonoBehaviour
     {
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
+        orientation();
         
     }
     private void FixedUpdate()
     {
         playerbody.velocity = new Vector2(h, v) * speed;
+    }
+    void orientation()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        Vector2 direction = new Vector2(
+                mousePosition.x - transform.position.x,
+                mousePosition.y - transform.position.y
+
+            );
+        transform.up = direction;
+
     }
 
 }
