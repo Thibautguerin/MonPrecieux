@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+public enum TargetType
+{
+    PLAYER,
+    TORCH
+}
+
 public class Enemy : MonoBehaviour
 {
     [Header("Stats")]
@@ -11,7 +17,6 @@ public class Enemy : MonoBehaviour
     public float lives;
 
     [Header("Target")]
-    public Transform target;
     public float loseFocusDurationMin;
     public float loseFocusDurationMax;
 
@@ -23,8 +28,10 @@ public class Enemy : MonoBehaviour
 
     [Header("Attack")]
     public float attackDelay = 1f;
+    public float turnOffTheTorchDelay = 2f;
 
     [Space]
+    private Transform target;
     public SpriteRenderer statusRenderer;
     private NavMeshAgent agent;
 
@@ -40,6 +47,8 @@ public class Enemy : MonoBehaviour
     private bool focusTarget;
     private bool canLoseFocus;
     private bool isAttacking;
+
+    private TargetType targetType;
 
     private void Start()
     {
@@ -58,7 +67,14 @@ public class Enemy : MonoBehaviour
             if (currentAttackDelay <= 0)
             {
                 isAttacking = false;
-                Debug.Log("Attack");
+                if (targetType == TargetType.PLAYER)
+                {
+                    Debug.Log("Attack!");
+                }
+                else
+                {
+                    Debug.Log("Turn off the torch!");
+                }
             }
         }
         else
@@ -74,7 +90,14 @@ public class Enemy : MonoBehaviour
                 {
                     // Start Attack
                     isAttacking = true;
-                    currentAttackDelay = attackDelay;
+                    if (targetType == TargetType.PLAYER)
+                    {
+                        currentAttackDelay = attackDelay;
+                    }
+                    else
+                    {
+                        currentAttackDelay = turnOffTheTorchDelay;
+                    }
                 }
             }
             else
@@ -120,7 +143,6 @@ public class Enemy : MonoBehaviour
                     //Debug.Log("Test");
                     currentPatrolDelay -= Time.deltaTime;
                 }
-
             }
 
             if (canLoseFocus)
@@ -140,8 +162,20 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && (!focusTarget || targetType == TargetType.PLAYER))
         {
+            targetType = TargetType.PLAYER;
+            target = collision.transform;
+            canLoseFocus = false;
+            currentLoseFocusDuration = Random.Range(loseFocusDurationMin, loseFocusDurationMax);
+            focusTarget = true;
+            agent.speed = chaseSpeed;
+            statusRenderer.color = new Color(1, 0, 0);
+        }
+        else if (collision.CompareTag("Torch"))
+        {
+            targetType = TargetType.TORCH;
+            target = collision.transform;
             canLoseFocus = false;
             currentLoseFocusDuration = Random.Range(loseFocusDurationMin, loseFocusDurationMax);
             focusTarget = true;
@@ -152,7 +186,8 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if ((collision.CompareTag("Player") && targetType == TargetType.PLAYER)
+            || (collision.CompareTag("Torch") && targetType == TargetType.TORCH))
         {
             canLoseFocus = true;
             statusRenderer.color = new Color(1, 0.5f, 0);
