@@ -117,3 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586dd557e76fe3a4896a16ea27d4aa91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distance: 30
+  height: 5
+  rebond: 0.5
+  gravity: 1.3
