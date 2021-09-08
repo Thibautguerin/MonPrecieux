@@ -6,10 +6,9 @@ public class Object_Controller : MonoBehaviour
 {
     public float distance;
     public float height;
-    public float gravity;
     [Range(0.0f, 1f)]
     public float rebond;
-    private Rigidbody2D rb;
+    private Rigidbody rb;
 
     private void Awake()
     {
@@ -17,13 +16,13 @@ public class Object_Controller : MonoBehaviour
         transform.position = new Vector2(transform.parent.position.x, transform.position.y);
 
         //Rigibody component
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
+    }
 
+    public void Setup(Vector3 vector3)
+    {
         //Initial velocity
-        rb.velocity = new Vector2(distance, height);
-
-        //Initial velocity
-        rb.gravityScale = gravity;
+        rb.velocity = new Vector3(vector3.x * distance, height, vector3.z * distance);
     }
 
     // Update is called once per frame
@@ -35,15 +34,15 @@ public class Object_Controller : MonoBehaviour
         //Rebond
         if (transform.position.y <= 1.09f && rb.velocity.y < -1f)
         {
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Abs(rb.velocity.y * rebond));
-            transform.position = new Vector2(transform.position.x, 1.1f);
+            rb.velocity = new Vector3(rb.velocity.x, Mathf.Abs(rb.velocity.y * rebond), rb.velocity.z);
+            transform.position = new Vector3(transform.position.x, 1.1f, transform.position.z);
         }
         //Stop rebond
         else if (transform.position.y <= 1.09f)
         {
-            rb.gravityScale = 0;
-            rb.velocity = Vector2.zero;
-            transform.position = new Vector2(transform.position.x, 1.1f);
+            rb.useGravity = false;
+            rb.velocity = Vector3.zero;
+            transform.position = new Vector3(transform.position.x, 1.1f, transform.position.z);
         }
     }
 }
