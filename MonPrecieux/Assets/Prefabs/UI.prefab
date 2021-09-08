@@ -712,6 +712,7 @@ GameObject:
   - component: {fileID: 4708722035371051878}
   - component: {fileID: 812797230546844294}
   - component: {fileID: 6709107047957539374}
+  - component: {fileID: 994871743147306044}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -780,6 +781,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: How to Play
+--- !u!111 &994871743147306044
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547765850164532942}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 538d4bb7a6ae52b4f8685984d7d76c2d, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 538d4bb7a6ae52b4f8685984d7d76c2d, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1772095829020349660
 GameObject:
   m_ObjectHideFlags: 0
@@ -5503,6 +5520,7 @@ GameObject:
   - component: {fileID: 8146243835386069374}
   - component: {fileID: 3384140624506285369}
   - component: {fileID: 5373017601407045591}
+  - component: {fileID: 2329291929813315320}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -5571,6 +5589,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Credits
+--- !u!111 &2329291929813315320
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5236969445464140458}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 538d4bb7a6ae52b4f8685984d7d76c2d, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 538d4bb7a6ae52b4f8685984d7d76c2d, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &5289303836143822630
 GameObject:
   m_ObjectHideFlags: 0
@@ -5939,6 +5973,7 @@ GameObject:
   - component: {fileID: 3339752019981746258}
   - component: {fileID: 1138902937855401567}
   - component: {fileID: 8344392777234286206}
+  - component: {fileID: 2085264158216899743}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -6007,6 +6042,25 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Paused
+--- !u!95 &2085264158216899743
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6819767945237575035}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5804d0360895b2e4285843b30046bc3d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7070846214137648433
 GameObject:
   m_ObjectHideFlags: 0
@@ -6958,6 +7012,7 @@ GameObject:
   - component: {fileID: 730738762146452002}
   - component: {fileID: 3231349650711354196}
   - component: {fileID: 2444677724996428653}
+  - component: {fileID: 7103726819003515162}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -7026,3 +7081,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Settings
+--- !u!111 &7103726819003515162
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9205576464239369593}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 538d4bb7a6ae52b4f8685984d7d76c2d, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 538d4bb7a6ae52b4f8685984d7d76c2d, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
