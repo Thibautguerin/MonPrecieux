@@ -134,8 +134,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.85}
-  m_Size: {x: 1.43, y: 1.7}
+  m_Offset: {x: 0.09, y: 0.6}
+  m_Size: {x: 0.7, y: 1}
   m_Direction: 0
 --- !u!114 &1516262481676046830
 MonoBehaviour:
@@ -156,10 +156,12 @@ MonoBehaviour:
   m_SelfShadows: 0
   m_ApplyToSortingLayers: 00000000
   m_ShapePath:
-  - {x: -0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: 0.5, z: 0}
-  - {x: -0.5, y: 0.5, z: 0}
-  m_ShapePathHash: 160822549
+  - {x: -0.20778084, y: 0.07584381, z: 0}
+  - {x: 0.31951165, y: 0.08443844, z: 0}
+  - {x: 0.47815633, y: 0.13867837, z: 0}
+  - {x: 0.4226477, y: 0.26794368, z: 0}
+  - {x: -0.22497034, y: 0.3023224, z: 0}
+  - {x: -0.35552835, y: 0.18165183, z: 0}
+  m_ShapePathHash: -235688131
   m_Mesh: {fileID: 0}
-  m_InstanceId: 183514
+  m_InstanceId: -2016
