@@ -12,11 +12,10 @@ public class Lauch_Object : MonoBehaviour
         v3Pos = Camera.main.ScreenToWorldPoint(v3Pos);
         v3Pos -= transform.position;
 
-        //Press T == Launch
+        //Press Left Click == Launch
         if (Input.GetMouseButtonDown(0))
         {
             Instantiate(Resources.Load<GameObject>("Prefabs/Object"), transform, true).GetComponent<Object_Controller>().Setup(v3Pos.normalized);
-            
         }
     }
 }
