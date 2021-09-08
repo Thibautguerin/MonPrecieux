@@ -162,6 +162,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  animationSpeed: 3
+  animationToIdleSpeed: 3
+  idleAnimationSpeed: 0.2
+  maxRotation: 10
+  minIdleScale: 0.95
+  maxIdleScale: 1.05
   rotator: {fileID: 1155594743}
 --- !u!212 &3599208895716245248
 SpriteRenderer:
