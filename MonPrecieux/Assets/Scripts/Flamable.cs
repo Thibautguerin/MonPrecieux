@@ -35,6 +35,7 @@ public class Flamable: MonoBehaviour
                                   transform.position.y,
                                   transform.position.z),
                                    Quaternion.identity);
+                gameObject.AddComponent<ParticleSystem>();
                 
             }
         }
