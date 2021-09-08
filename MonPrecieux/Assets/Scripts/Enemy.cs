@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     [Header("Stats")]
     public float patrolSpeed = 2;
     public float chaseSpeed = 3;
+    public float stunnedDuration = 2;
     public float lives;
 
     [Header("Target")]
@@ -42,11 +43,14 @@ public class Enemy : MonoBehaviour
     private float currentPatrolDelay;
 
     private float currentAttackDelay;
+    private float currentStunnedDuration;
 
     private bool isGoingBack;
     private bool focusTarget;
     private bool canLoseFocus;
     private bool isAttacking;
+    private bool isStunned;
+    private bool isOnFire;
 
     private TargetType targetType;
 
@@ -61,6 +65,16 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (isStunned)
+        {
+            currentStunnedDuration -= Time.deltaTime;
+            if (currentStunnedDuration <= 0)
+            {
+                isStunned = false;
+            }
+            return;
+        }
+
         if (isAttacking)
         {
             currentAttackDelay -= Time.deltaTime;
@@ -158,6 +172,13 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void Stun()
+    {
+        currentStunnedDuration = stunnedDuration;
+        isStunned = true;
+        isAttacking = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
