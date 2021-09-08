@@ -6,43 +6,58 @@ public class Object_Controller : MonoBehaviour
 {
     public float distance;
     public float height;
+    public float gravityScale;
     [Range(0.0f, 1f)]
     public float rebond;
+    
     private Rigidbody rb;
+    private bool useGravity;
 
     private void Awake()
     {
         //Get position of player
-        transform.position = new Vector2(transform.parent.position.x, transform.position.y);
+        transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y, transform.position.z);
 
         //Rigibody component
         rb = GetComponent<Rigidbody>();
+
+        useGravity = true;
     }
 
     public void Setup(Vector3 vector3)
     {
         //Initial velocity
-        rb.velocity = new Vector3(vector3.x * distance, height, vector3.z * distance);
+        rb.velocity = new Vector3(vector3.x * distance, vector3.y * distance, -height);
     }
 
     // Update is called once per frame
     void Update()
     {
         //Change scale by Y position to do some Gravity effect
-        transform.localScale = new Vector2(transform.position.y / 2, transform.position.y / 2);
+        transform.localScale = new Vector2(Mathf.Abs(transform.position.z) / 2, Mathf.Abs(transform.position.z) / 2);
 
         //Rebond
-        if (transform.position.y <= 1.09f && rb.velocity.y < -1f)
+        if (transform.position.z >= -1.09f && rb.velocity.z > 1f)
         {
-            rb.velocity = new Vector3(rb.velocity.x, Mathf.Abs(rb.velocity.y * rebond), rb.velocity.z);
-            transform.position = new Vector3(transform.position.x, 1.1f, transform.position.z);
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -rb.velocity.z * rebond);
+            transform.position = new Vector3(transform.position.x, transform.position.y, -1.1f);
         }
         //Stop rebond
-        else if (transform.position.y <= 1.09f)
+        else if (transform.position.z >= -1.09f)
         {
-            rb.useGravity = false;
+            useGravity = false;
             rb.velocity = Vector3.zero;
-            transform.position = new Vector3(transform.position.x, 1.1f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y, -1.08f);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (useGravity)
+        {
+            //Custom Gravity controller
+            Vector3 gravity = -9.81f * gravityScale * Vector3.back;
+            rb.AddForce(gravity, ForceMode.Acceleration);
         }
     }
 }
