@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
     private float h;
     private float v;
     private Rigidbody2D playerbody;
-    public SpriteRenderer sr;
     void Start()
     {
         playerbody = GetComponent<Rigidbody2D>();
@@ -32,6 +31,6 @@ public class PlayerMovement : MonoBehaviour
             mousePosition.y - transform.position.y
         );
         // transform.up = direction;
-        sr.flipX = Input.mousePosition.x < Screen.width / 2;
+        transform.localScale = Input.mousePosition.x < Screen.width / 2 ? new Vector3(-1, 1, 1) : Vector3.one;
     }
 }
