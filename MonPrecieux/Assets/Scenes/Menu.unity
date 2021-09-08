@@ -197,6 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicClips: []
   sfxClips: []
+  isGlobalOn: 1
   isMusicOn: 1
   isSfxOn: 1
   globalVolume: 1
@@ -342,6 +343,14 @@ PrefabInstance:
     - target: {fileID: 3619429848271648668, guid: b471876bb74d1f64d94a8de8c389f2c3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711836748137741406, guid: b471876bb74d1f64d94a8de8c389f2c3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00012207031
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711836748137741406, guid: b471876bb74d1f64d94a8de8c389f2c3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -5.000061
       objectReference: {fileID: 0}
     - target: {fileID: 3981867631452496473, guid: b471876bb74d1f64d94a8de8c389f2c3, type: 3}
       propertyPath: m_AnchorMax.y

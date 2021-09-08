@@ -21,6 +21,7 @@ class AudioManager : MonoBehaviour
     public List<Clip> sfxClips;
     List<AudioSource> musicSources = new List<AudioSource>();
     List<AudioSource> sfxSources = new List<AudioSource>();
+    public bool isGlobalOn;
     public bool isMusicOn;
     public bool isSfxOn;
     [Range(0, 1)]
@@ -34,14 +35,20 @@ class AudioManager : MonoBehaviour
     {
         GenerateSources(musicClips, musicSources);
         GenerateSources(sfxClips, sfxSources);
-        AudioListener.volume = globalVolume;
-        foreach (var i in musicSources) i.volume *= musicVolume;
-        foreach (var i in sfxSources) i.volume *= sfxVolume;
     }
     void Update()
     {
-        foreach (var i in musicSources) i.mute = !isMusicOn;
-        foreach (var i in sfxSources) i.mute = !isSfxOn;
+        foreach (var i in musicSources)
+        {
+            i.mute = !isMusicOn;
+            i.volume *= musicVolume;
+        }
+        foreach (var i in sfxSources)
+        {
+            i.mute = !isSfxOn;
+            i.volume *= sfxVolume;
+        }
+        AudioListener.volume = isGlobalOn ? globalVolume : 0;
     }
     void GenerateSources(List<Clip> clips, List<AudioSource> sources)
     {

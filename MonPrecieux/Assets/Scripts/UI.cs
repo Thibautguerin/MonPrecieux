@@ -15,6 +15,7 @@ class UI : MonoBehaviour
     public GameObject L_Settings;
     public GameObject L_Credits;
     [Header("Toggles")]
+    public Toggle Toggle_Global;
     public Toggle Toggle_Music;
     public Toggle Toggle_SFX;
     [Header("Sliders")]
@@ -32,8 +33,10 @@ class UI : MonoBehaviour
         if (!isMenued && !isSettinged && !isCredited && Input.GetKeyDown(KeyCode.Escape)) SwitchIsPaused();
         if (isSettinged && Input.GetKeyDown(KeyCode.Escape)) SwitchIsSettinged();
         if (isCredited && Input.GetKeyDown(KeyCode.Escape)) SwitchIsCredited();
+        Toggle_Global.onValueChanged.AddListener(delegate { AudioManager.instance.isGlobalOn = Toggle_Global.isOn; });
         Toggle_Music.onValueChanged.AddListener(delegate { AudioManager.instance.isMusicOn = Toggle_Music.isOn; });
         Toggle_SFX.onValueChanged.AddListener(delegate { AudioManager.instance.isSfxOn = Toggle_SFX.isOn; });
+        Toggle_Global.isOn = AudioManager.instance.isGlobalOn;
         Toggle_Music.isOn = AudioManager.instance.isMusicOn;
         Toggle_SFX.isOn = AudioManager.instance.isSfxOn;
         Slider_Global.onValueChanged.AddListener(delegate { AudioManager.instance.globalVolume = Slider_Global.value; });
@@ -42,6 +45,9 @@ class UI : MonoBehaviour
         Slider_Global.value = AudioManager.instance.globalVolume;
         Slider_Music.value = AudioManager.instance.musicVolume;
         Slider_SFX.value = AudioManager.instance.sfxVolume;
+        Slider_Global.interactable = AudioManager.instance.isGlobalOn;
+        Slider_Music.interactable = AudioManager.instance.isMusicOn;
+        Slider_SFX.interactable = AudioManager.instance.isSfxOn;
     }
     public void SwitchIsPaused() { isPaused ^= true; }
     public void SwitchIsSettinged() { isSettinged ^= true; }
