@@ -21,6 +21,9 @@ public class Enemy : MonoBehaviour
     public float patrolDelayMin;
     public float patrolDelayMax;
 
+    [Header("Attack")]
+    public float attackDelay = 1f;
+
     [Space]
     public SpriteRenderer statusRenderer;
     private NavMeshAgent agent;
@@ -30,10 +33,13 @@ public class Enemy : MonoBehaviour
     private Vector3 patrolPosition;
     private int currentPatrolId = -1;
     private float currentPatrolDelay;
-    private bool isGoingBack;
 
+    private float currentAttackDelay;
+
+    private bool isGoingBack;
     private bool focusTarget;
     private bool canLoseFocus;
+    private bool isAttacking;
 
     private void Start()
     {
@@ -46,71 +52,88 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (focusTarget)
+        if (isAttacking)
         {
-            agent.SetDestination(target.position);
-
-            if (Vector3.Distance(target.position, transform.position) <= 1)
+            currentAttackDelay -= Time.deltaTime;
+            if (currentAttackDelay <= 0)
             {
-                // Attack
+                isAttacking = false;
+                Debug.Log("Attack");
             }
         }
         else
         {
-            // patrol
-            if (currentPatrolDelay <= 0)
+            if (focusTarget)
             {
-                currentPatrolDelay = Random.Range(patrolDelayMin, patrolDelayMax);
-                if (currentPatrolId == patrolPoints.Length - 1)
+                if (!canLoseFocus)
                 {
-                    if (loopPatrol)
-                    {
-                        currentPatrolId = 0;
-                    }
-                    else
-                    {
-                        currentPatrolId--;
-                        isGoingBack = true;
-                    }
+                    agent.SetDestination(target.position);
                 }
-                else if (currentPatrolId == 0 && isGoingBack)
+
+                if (Vector3.Distance(target.position, transform.position) <= 1 && !isAttacking)
                 {
-                    currentPatrolId++;
-                    isGoingBack = false;
+                    // Start Attack
+                    isAttacking = true;
+                    currentAttackDelay = attackDelay;
                 }
-                else
+            }
+            else
+            {
+                // patrol
+                if (currentPatrolDelay <= 0)
                 {
-                    if (!isGoingBack)
+                    currentPatrolDelay = Random.Range(patrolDelayMin, patrolDelayMax);
+                    if (currentPatrolId == patrolPoints.Length - 1)
+                    {
+                        if (loopPatrol)
+                        {
+                            currentPatrolId = 0;
+                        }
+                        else
+                        {
+                            currentPatrolId--;
+                            isGoingBack = true;
+                        }
+                    }
+                    else if (currentPatrolId == 0 && isGoingBack)
                     {
                         currentPatrolId++;
+                        isGoingBack = false;
                     }
                     else
                     {
-                        currentPatrolId--;
+                        if (!isGoingBack)
+                        {
+                            currentPatrolId++;
+                        }
+                        else
+                        {
+                            currentPatrolId--;
+                        }
                     }
+                    patrolPosition = patrolPoints[currentPatrolId].position;
+                    agent.SetDestination(patrolPosition);
                 }
-                patrolPosition = patrolPoints[currentPatrolId].position;
-                agent.SetDestination(patrolPosition);
+
+                if (Vector3.Distance(patrolPosition, transform.position) <= 1)
+                {
+                    //Debug.Log("Test");
+                    currentPatrolDelay -= Time.deltaTime;
+                }
+
             }
 
-            if (Vector3.Distance(patrolPosition, transform.position) <= 1)
+            if (canLoseFocus)
             {
-                //Debug.Log("Test");
-                currentPatrolDelay -= Time.deltaTime;
-            }
-
-        }
-
-        if (canLoseFocus)
-        {
-            currentLoseFocusDuration -= Time.deltaTime;
-            if (currentLoseFocusDuration <= 0)
-            {
-                focusTarget = false;
-                canLoseFocus = false;
-                agent.speed = patrolSpeed;
-                agent.SetDestination(patrolPosition);
-                statusRenderer.color = new Color(1, 1, 0);
+                currentLoseFocusDuration -= Time.deltaTime;
+                if (currentLoseFocusDuration <= 0)
+                {
+                    focusTarget = false;
+                    canLoseFocus = false;
+                    agent.speed = patrolSpeed;
+                    agent.SetDestination(patrolPosition);
+                    statusRenderer.color = new Color(1, 1, 0);
+                }
             }
         }
     }

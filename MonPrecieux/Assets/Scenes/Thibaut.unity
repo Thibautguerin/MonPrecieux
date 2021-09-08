@@ -583,8 +583,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0, g: 0.45979524, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0dbbc349825d8db41b01f7ac8951d641, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1077,6 +1077,14 @@ PrefabInstance:
     - target: {fileID: 4433025399264382375, guid: 0c56243ac5093a94bb75d968c7b6d1cd, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433025400032803991, guid: 0c56243ac5093a94bb75d968c7b6d1cd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433025400032803991, guid: 0c56243ac5093a94bb75d968c7b6d1cd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c56243ac5093a94bb75d968c7b6d1cd, type: 3}
