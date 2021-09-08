@@ -299,25 +299,65 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && (!focusTarget || targetType == TargetType.PLAYER))
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, (collision.transform.position + Vector3.up - transform.position).normalized);
+
+        if (hit.collider != null)
         {
-            targetType = TargetType.PLAYER;
-            target = collision.transform;
-            canLoseFocus = false;
-            currentLoseFocusDuration = Random.Range(loseFocusDurationMin, loseFocusDurationMax);
-            focusTarget = true;
-            agent.speed = chaseSpeed;
-            statusRenderer.color = new Color(1, 0, 0);
+            //Debug.Log(hit.collider.gameObject.name);
+            if (hit.collider.CompareTag("Player") && collision.CompareTag("Player") && (!focusTarget || targetType == TargetType.PLAYER))
+            {
+                targetType = TargetType.PLAYER;
+                target = collision.transform;
+                canLoseFocus = false;
+                currentLoseFocusDuration = Random.Range(loseFocusDurationMin, loseFocusDurationMax);
+                focusTarget = true;
+                agent.speed = chaseSpeed;
+                statusRenderer.color = new Color(1, 0, 0);
+            }
+            else if (hit.collider.CompareTag("Torch") && collision.CompareTag("Torch"))
+            {
+                targetType = TargetType.TORCH;
+                target = collision.transform;
+                canLoseFocus = false;
+                currentLoseFocusDuration = Random.Range(loseFocusDurationMin, loseFocusDurationMax);
+                focusTarget = true;
+                agent.speed = chaseSpeed;
+                statusRenderer.color = new Color(1, 0, 0);
+            }
         }
-        else if (collision.CompareTag("Torch"))
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if ((!focusTarget && collision.CompareTag("Player"))
+            || (targetType == TargetType.PLAYER && collision.CompareTag("Torch")))
         {
-            targetType = TargetType.TORCH;
-            target = collision.transform;
-            canLoseFocus = false;
-            currentLoseFocusDuration = Random.Range(loseFocusDurationMin, loseFocusDurationMax);
-            focusTarget = true;
-            agent.speed = chaseSpeed;
-            statusRenderer.color = new Color(1, 0, 0);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, (collision.transform.position + Vector3.up - transform.position).normalized);
+
+            if (hit.collider != null)
+            {
+                //Debug.Log(hit.collider.gameObject.name);
+                if (hit.collider.CompareTag("Player") && collision.CompareTag("Player") && (!focusTarget || targetType == TargetType.PLAYER))
+                {
+                    targetType = TargetType.PLAYER;
+                    target = collision.transform;
+                    canLoseFocus = false;
+                    currentLoseFocusDuration = Random.Range(loseFocusDurationMin, loseFocusDurationMax);
+                    focusTarget = true;
+                    agent.speed = chaseSpeed;
+                    statusRenderer.color = new Color(1, 0, 0);
+                }
+                else if (hit.collider.CompareTag("Torch") && collision.CompareTag("Torch"))
+                {
+                    targetType = TargetType.TORCH;
+                    target = collision.transform;
+                    canLoseFocus = false;
+                    currentLoseFocusDuration = Random.Range(loseFocusDurationMin, loseFocusDurationMax);
+                    focusTarget = true;
+                    agent.speed = chaseSpeed;
+                    statusRenderer.color = new Color(1, 0, 0);
+                }
+            }
         }
     }
 
