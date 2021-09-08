@@ -40,6 +40,28 @@ public class PlayerMovement : MonoBehaviour
         v = Input.GetAxis("Vertical");
         if (!UI.instance.isPaused) orientation();
 
+        Animation();
+    }
+    private void FixedUpdate()
+    {
+        playerbody.velocity = new Vector2(h, v) * speed;
+    }
+
+    void orientation()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        Vector2 direction = new Vector2(
+            mousePosition.x - rotator.position.x,
+            mousePosition.y - rotator.position.y
+        );
+        rotator.up = direction;
+
+        scaleSave = Input.mousePosition.x < Screen.width / 2 ? new Vector3(-1, 1, 1) : Vector3.one;
+    }
+
+    private void Animation()
+    {
         if (playerbody.velocity.magnitude > 0)
         {
             if (toggleAnimation)
@@ -118,23 +140,5 @@ public class PlayerMovement : MonoBehaviour
         transform.rotation = newRotation;
 
         transform.localScale = scaleSave * currentAnimScale;
-    }
-    private void FixedUpdate()
-    {
-        playerbody.velocity = new Vector2(h, v) * speed;
-    }
-    void orientation()
-    {
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        Vector2 direction = new Vector2(
-            mousePosition.x - rotator.position.x,
-            mousePosition.y - rotator.position.y
-        );
-        rotator.up = direction;
-
-        //Vector3 newScale = Input.mousePosition.x < Screen.width / 2 ? new Vector3(-1, 1, 1) : Vector3.one;
-        scaleSave = Input.mousePosition.x < Screen.width / 2 ? new Vector3(-1, 1, 1) : Vector3.one;
-        //transform.localScale = Input.mousePosition.x < Screen.width / 2 ? new Vector3(-1, 1, 1) : Vector3.one;
     }
 }
