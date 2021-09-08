@@ -17,6 +17,7 @@ class SaveManager : MonoBehaviour
         AudioManager.instance.globalVolume = PlayerPrefs.GetFloat("globalVolume", 1);
         AudioManager.instance.musicVolume = PlayerPrefs.GetFloat("musicVolume", 1);
         AudioManager.instance.sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 1);
+        UI.instance.showHTP = PlayerPrefs.GetInt("showHTP", 1) == 1 ? true : false;
     }
     void Save()
     {
@@ -26,5 +27,6 @@ class SaveManager : MonoBehaviour
         PlayerPrefs.SetFloat("globalVolume", AudioManager.instance.globalVolume);
         PlayerPrefs.SetFloat("musicVolume", AudioManager.instance.musicVolume);
         PlayerPrefs.SetFloat("sfxVolume", AudioManager.instance.sfxVolume);
+        PlayerPrefs.SetInt("showHTP", UI.instance.showHTP ? 1 : 0);
     }
 }

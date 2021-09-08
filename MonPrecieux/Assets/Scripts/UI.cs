@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 class UI : MonoBehaviour
 {
+    public static UI instance;
     [Header("State")]
     public bool isPaused;
     public bool isMenued;
@@ -26,8 +27,7 @@ class UI : MonoBehaviour
     public Slider Slider_Global;
     public Slider Slider_Music;
     public Slider Slider_SFX;
-    void Start() { showHTP = PlayerPrefs.GetInt("showHTP", 1) == 1 ? true : false; }
-    void OnDestroy() { PlayerPrefs.SetInt("showHTP", showHTP ? 1 : 0); }
+    void Awake() { if (instance == null) { instance = this; DontDestroyOnLoad(gameObject); } else Destroy(gameObject); }
     void Update()
     {
         Time.timeScale = isPaused ? 0 : 1;
