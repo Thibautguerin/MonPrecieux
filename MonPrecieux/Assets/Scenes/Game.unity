@@ -522,25 +522,9 @@ PrefabInstance:
       value: Camera
       objectReference: {fileID: 0}
     - target: {fileID: 5759504819244328025, guid: 8467eaf547805c843a847e4b6120b736, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 2105714950}
-    - target: {fileID: 5759504819244328025, guid: 8467eaf547805c843a847e4b6120b736, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 2105714950}
-    - target: {fileID: 5759504819244328025, guid: 8467eaf547805c843a847e4b6120b736, type: 3}
-      propertyPath: menuMovementSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5759504819244328025, guid: 8467eaf547805c843a847e4b6120b736, type: 3}
-      propertyPath: menuMovementAmplitude
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5759504819244328026, guid: 8467eaf547805c843a847e4b6120b736, type: 3}
-      propertyPath: m_Dithering
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5759504819244328027, guid: 8467eaf547805c843a847e4b6120b736, type: 3}
       propertyPath: m_RootOrder
       value: 0

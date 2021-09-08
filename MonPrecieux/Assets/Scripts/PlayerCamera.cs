@@ -3,19 +3,26 @@ class PlayerCamera : MonoBehaviour
 {
     public Camera camera;
     public Transform target;
-    [Header("Menu Movement")]
     [Range(0, 1)]
-    public float amplitude;
+    public float movSpeed;
     [Range(0, 1)]
-    public float speed;
+    public float zoomSpeed;
+    public float zoomSize;
+    public float dezoomSize;
     Vector3 offset;
-    void Start() { offset = transform.position; }
+    void Start()
+    {
+        camera.orthographicSize = zoomSize;
+        offset = transform.position;
+    }
     void FixedUpdate()
     {
         if (!UI.instance.isMenued)
         {
-            if (Input.GetKey(KeyCode.F)) transform.position = Vector3.Lerp(transform.position, target.position + offset + new Vector3(10, 0, offset.z), .05f);
-            else transform.position = Vector3.Lerp(transform.position, target.position + offset, .16f);
+            transform.position = Vector3.Lerp(transform.position, target.position + offset, movSpeed);
+            camera.orthographicSize = Input.GetKey(KeyCode.F) ?
+                camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, dezoomSize, zoomSpeed) :
+                camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, zoomSize, zoomSpeed);
         }
     }
 }

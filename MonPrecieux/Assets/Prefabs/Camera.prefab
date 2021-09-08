@@ -47,7 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 5759504819244328020}
-  player: {fileID: 0}
+  target: {fileID: 0}
+  movSpeed: 0.2
+  zoomSpeed: 0.2
+  zoomSize: 5
+  dezoomSize: 8
 --- !u!20 &5759504819244328020
 Camera:
   m_ObjectHideFlags: 0
@@ -125,7 +129,7 @@ MonoBehaviour:
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
-  m_Dithering: 0
+  m_Dithering: 1
   m_ClearDepth: 1
   m_AllowXRRendering: 1
   m_RequiresDepthTexture: 0
