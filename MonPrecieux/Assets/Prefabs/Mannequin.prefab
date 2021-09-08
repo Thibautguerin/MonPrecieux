@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9163821675790561078}
   - component: {fileID: 9163821675790561079}
-  - component: {fileID: 9163821675790561080}
   - component: {fileID: 9163821675790561081}
+  - component: {fileID: 8980176715571661065}
   m_Layer: 0
   m_Name: Mannequin
   m_TagString: Untagged
@@ -84,18 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9163821675790561080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9163821675790561082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77d7fe3f2b2140b4499d36787a27ca47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &9163821675790561081
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -122,3 +110,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8980176715571661065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9163821675790561082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f2c4a59311a8c64991b230f0e17f870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsOnFire: 0
+  prefab: {fileID: 0}

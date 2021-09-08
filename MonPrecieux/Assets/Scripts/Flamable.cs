@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flamable : MonoBehaviour
+public class Flamable: MonoBehaviour
 {
 
-    bool IsOnFire = false;
+    public bool IsOnFire = false;
     public GameObject prefab;
 
     // Start is called before the first frame update
@@ -14,7 +14,7 @@ public class Flamable : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    // Update is called once per frame  
     void Update()
     {
 
@@ -23,26 +23,39 @@ public class Flamable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("OnFire"))
+        Flamable obj = collision.GetComponent<Flamable>();
+        if (obj!= null)
         {
-
-            gameObject.tag = "OnFire";
-            Instantiate(prefab,
-                new Vector3(transform.position.x,
-                              transform.position.y,
-                              transform.position.z),
-                               Quaternion.identity);
-            Destroy(gameObject);
+            Debug.Log("C'est bon");
+            if (obj.IsOnFire == true)
+            {
+                IsOnFire = true;
+                Instantiate(prefab,
+                    new Vector3(transform.position.x,
+                                  transform.position.y,
+                                  transform.position.z),
+                                   Quaternion.identity);
+                
+            }
         }
+       
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("OnFire"))
+        Flamable obj = collision.gameObject.GetComponent<Flamable>();
+        if (obj != null)
         {
-            gameObject.tag = "OnFire";
-            Instantiate(prefab);
-            Destroy(gameObject);
+            Debug.Log("C'est bon");
+            if (obj.IsOnFire == true)
+            {
+                IsOnFire = true;
+                Instantiate(prefab,
+                    new Vector3(transform.position.x,
+                                  transform.position.y,
+                                  transform.position.z),
+                                   Quaternion.identity);
+
+            }
         }
     }
-}    
-    
+}
