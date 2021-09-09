@@ -93,13 +93,13 @@ TextureImporter:
     outline:
     - - {x: -98, y: -98}
       - {x: -98, y: 98}
-      - {x: 10, y: 98}
-      - {x: 10, y: -98}
+      - {x: 6, y: 98}
+      - {x: 6, y: -98}
     physicsShape:
     - - {x: -98, y: -98}
       - {x: -98, y: 98}
-      - {x: 10, y: 98}
-      - {x: 10, y: -98}
+      - {x: 6, y: 98}
+      - {x: 6, y: -98}
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
     internalID: 0

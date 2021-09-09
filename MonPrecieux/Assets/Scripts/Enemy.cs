@@ -51,8 +51,10 @@ public class Enemy : MonoBehaviour
     public float minIdleScale = 0.95f;
     public float maxIdleScale = 1.05f;
 
-    [Space]
+    [Header("AI Status")]
     public SpriteRenderer statusRenderer;
+    public Sprite spriteFocusPlayer;
+    public Sprite spriteLosePlayer;
 
     private Transform target;
     private NavMeshAgent agent;
@@ -203,7 +205,7 @@ public class Enemy : MonoBehaviour
                     canLoseFocus = false;
                     agent.speed = patrolSpeed;
                     agent.SetDestination(patrolPosition);
-                    statusRenderer.color = new Color(1, 1, 0);
+                    statusRenderer.sprite = null;
                 }
             }
         }
@@ -360,7 +362,7 @@ public class Enemy : MonoBehaviour
                 currentLoseFocusDuration = Random.Range(loseFocusDurationMin, loseFocusDurationMax);
                 focusTarget = true;
                 agent.speed = chaseSpeed;
-                statusRenderer.color = new Color(1, 0, 0);
+                statusRenderer.sprite = spriteFocusPlayer;
             }
             else if (hit.collider.CompareTag("Torch") && collision.CompareTag("Torch"))
             {
@@ -370,7 +372,7 @@ public class Enemy : MonoBehaviour
                 currentLoseFocusDuration = Random.Range(loseFocusDurationMin, loseFocusDurationMax);
                 focusTarget = true;
                 agent.speed = chaseSpeed;
-                statusRenderer.color = new Color(1, 0, 0);
+                statusRenderer.sprite = spriteFocusPlayer;
             }
         }
     }
@@ -393,7 +395,7 @@ public class Enemy : MonoBehaviour
                     currentLoseFocusDuration = Random.Range(loseFocusDurationMin, loseFocusDurationMax);
                     focusTarget = true;
                     agent.speed = chaseSpeed;
-                    statusRenderer.color = new Color(1, 0, 0);
+                    statusRenderer.sprite = spriteFocusPlayer;
                 }
                 else if (hit.collider.CompareTag("Torch") && collision.CompareTag("Torch"))
                 {
@@ -403,7 +405,7 @@ public class Enemy : MonoBehaviour
                     currentLoseFocusDuration = Random.Range(loseFocusDurationMin, loseFocusDurationMax);
                     focusTarget = true;
                     agent.speed = chaseSpeed;
-                    statusRenderer.color = new Color(1, 0, 0);
+                    statusRenderer.sprite = spriteFocusPlayer;
                 }
             }
         }
@@ -415,7 +417,7 @@ public class Enemy : MonoBehaviour
             || (collision.CompareTag("Torch") && targetType == TargetType.TORCH))
         {
             canLoseFocus = true;
-            statusRenderer.color = new Color(1, 0.5f, 0);
+            statusRenderer.sprite = spriteLosePlayer;
         }
     }
 }
