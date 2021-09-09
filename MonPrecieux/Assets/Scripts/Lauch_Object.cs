@@ -15,7 +15,7 @@ public class Lauch_Object : MonoBehaviour
         v3Pos -= transform.position;
 
         //Player position
-        Vector2 v2Pos = new Vector2(transform.position.x + 1.5f * transform.localScale.x, transform.position.y);
+        Vector2 v2Pos = new Vector2(transform.position.x, transform.position.y);
 
         //Press Left Click == Launch
         if (Input.GetMouseButtonDown(0) && getTorch)
@@ -44,40 +44,39 @@ public class Lauch_Object : MonoBehaviour
             Instantiate(Resources.Load<GameObject>("Prefabs/Torch"), transform.parent, true).GetComponent<Object_Controller>().Setup(v3Pos.normalized, v2Pos);
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Check parent
-        if (collision.transform.parent != null)
+        //Parent == Object
+        if (collision.transform.CompareTag("Torch"))
         {
-            //Parent == Object
-            if (collision.transform.parent.CompareTag("Torch"))
+            Debug.Log("1");
+            //If Object stop bouncing, canPickUp == true
+            if (collision.gameObject.GetComponent<Object_Controller>().canPickUp)
             {
-                //If Object stop bouncing, canPickUp == true
-                if (collision.gameObject.GetComponentInParent<Object_Controller>().canPickUp)
-                {
-                    getTorch = true;
-                    PlayerMovement.Instance.getTorch = true;
-                    Destroy(collision.transform.parent.gameObject);
+                getTorch = true;
+                PlayerMovement.Instance.getTorch = true;
+                Destroy(collision.gameObject);
 
-                    switch (PlayerMovement.Instance.spriteOrientation)
-                    {
-                        case SpriteOrientation.SIDE:
-                            PlayerMovement.Instance.spriteRenderer.sprite = PlayerMovement.Instance.lookBottomRightTorch;
-                            PlayerMovement.Instance.torchLightSide.SetActive(true);
-                            break;
-                        case SpriteOrientation.BOTTOM:
-                            PlayerMovement.Instance.spriteRenderer.sprite = PlayerMovement.Instance.lookBottomTorch;
-                            PlayerMovement.Instance.torchLightBottom.SetActive(true);
-                            break;
-                        case SpriteOrientation.TOP:
-                            PlayerMovement.Instance.spriteRenderer.sprite = PlayerMovement.Instance.lookTopTorch;
-                            PlayerMovement.Instance.torchLightTop.SetActive(true);
-                            break;
-                        default:
-                            break;
-                    }
+                switch (PlayerMovement.Instance.spriteOrientation)
+                {
+                    case SpriteOrientation.SIDE:
+                        PlayerMovement.Instance.spriteRenderer.sprite = PlayerMovement.Instance.lookBottomRightTorch;
+                        PlayerMovement.Instance.torchLightSide.SetActive(true);
+                        break;
+                    case SpriteOrientation.BOTTOM:
+                        PlayerMovement.Instance.spriteRenderer.sprite = PlayerMovement.Instance.lookBottomTorch;
+                        PlayerMovement.Instance.torchLightBottom.SetActive(true);
+                        break;
+                    case SpriteOrientation.TOP:
+                        PlayerMovement.Instance.spriteRenderer.sprite = PlayerMovement.Instance.lookTopTorch;
+                        PlayerMovement.Instance.torchLightTop.SetActive(true);
+                        break;
+                    default:
+                        break;
                 }
             }
         }
+
     }
+
 }
