@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1221347350429166185}
   - component: {fileID: 2400153959459716012}
   - component: {fileID: 6691248255530162141}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Torch
   m_TagString: Torch
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3028470044040045895}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6243809373235053994}
@@ -136,10 +136,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 30
-  height: 1
+  height: 0.8
   gravityScale: 1.3
   rebond: 0.9
-  size: 0.7
+  size: 0.9
   canPickUp: 0
 --- !u!1 &6243809373235053995
 GameObject:
@@ -151,7 +151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6243809373235053994}
   - component: {fileID: 6243809373235053993}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
