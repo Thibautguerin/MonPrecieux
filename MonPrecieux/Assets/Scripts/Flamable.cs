@@ -10,10 +10,18 @@ public class Flamable: MonoBehaviour
     public bool hasburn = false;
     public float timer =0;
     public float Timetoburn = 5;
+    public SpriteRenderer Sr;
+    public Color BaseColor;
+    public Sprite Ashe;
+    public GameObject Fire;
 
     // Start is called before the first frame update
     void Start()
     {
+        Sr = GetComponent<SpriteRenderer>();
+        BaseColor = Sr.color;
+
+        
 
     }
 
@@ -24,12 +32,16 @@ public class Flamable: MonoBehaviour
         {
            
             timer -= Time.deltaTime;
+            Sr.color = new Color(BaseColor.r*timer/Timetoburn, BaseColor.g * timer / Timetoburn, BaseColor.b * timer / Timetoburn);
         }
-        else
+        else if (IsOnFire == true)
         {
             
             hasburn = true;
             IsOnFire = false;
+            Sr.sprite = Ashe;
+            Fire.GetComponent<ParticleSystem>().Stop();
+            
             
         }
 
@@ -46,12 +58,13 @@ public class Flamable: MonoBehaviour
             {
                 timer = Timetoburn;
                 IsOnFire = true;
-                Instantiate(prefab,
+                Fire = Instantiate(prefab,
                     new Vector3(transform.position.x,
                                   transform.position.y,
                                   transform.position.z),
-                                   Quaternion.identity);
-                gameObject.AddComponent<ParticleSystem>();
+                                   Quaternion.identity,
+                                   gameObject.transform);
+                
                 
             }
         }
