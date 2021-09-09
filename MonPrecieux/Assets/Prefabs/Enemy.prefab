@@ -471,7 +471,7 @@ MonoBehaviour:
   - {x: -0.44108093, y: 0.31085038, z: 0}
   m_ShapePathHash: -818665734
   m_Mesh: {fileID: 0}
-  m_InstanceId: 67728
+  m_InstanceId: 78058
 --- !u!114 &4732249755249270595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,7 +489,7 @@ MonoBehaviour:
   Itsthetorch: 0
   Itsagard: 1
   timer: 0
-  timeToBurn: 5
+  timeToBurn: 3
   prefab: {fileID: 3542513724633365298, guid: ed90d01a4ab507346a698f0c14a604a6, type: 3}
   fire: {fileID: 0}
   sr: {fileID: 0}
