@@ -14,13 +14,17 @@ public class Object_Controller : MonoBehaviour
     [HideInInspector]
     public bool canPickUp;
     
-    private Rigidbody rb;
+    private Rigidbody2D rb;
+    private CircleCollider2D coll2d;
     private bool useGravity;
 
     private void Awake()
     {
         //Rigibody component
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
+
+        //Collider Component
+        coll2d = GetComponent<CircleCollider2D>();
 
         //Initialize Variable
         canPickUp = false;
@@ -30,7 +34,7 @@ public class Object_Controller : MonoBehaviour
     public void Setup(Vector3 vector3, Vector2 vector2)
     {
         //Initial velocity
-        rb.velocity = new Vector3(vector3.x * distance, vector3.y * distance, -height);
+        rb.velocity = new Vector3(vector3.x * distance, vector3.y * distance);
 
         //Get position of player
         transform.position = new Vector3(vector2.x, vector2.y, transform.position.z);
@@ -40,20 +44,20 @@ public class Object_Controller : MonoBehaviour
     void Update()
     {
         //Change scale by Y position to do some Gravity effect
-        transform.localScale = new Vector2(Mathf.Abs(transform.position.z) * size, Mathf.Abs(transform.position.z) * size);
-
+        transform.localScale = new Vector3(Mathf.Abs(transform.position.z) * size, Mathf.Abs(transform.position.z) * size, 1);
+        coll2d.radius = 0.9f / Mathf.Abs(transform.position.z * size);
+        
         //Rebond
-        if (transform.position.z >= -1.09f && rb.velocity.z > 1f)
+        if (transform.position.z >= -1.09f && Mathf.Abs(height) > 0.05f)
         {
-            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -rb.velocity.z * rebond);
-            transform.position = new Vector3(transform.position.x, transform.position.y, -1.1f);
+            height = Mathf.Abs(height * rebond);
+            transform.position = new Vector3(transform.position.x, transform.position.y, -1.09f);
         }
         //Stop rebond
         else if (transform.position.z >= -1.09f)
         {
             canPickUp = true;
             useGravity = false;
-            rb.velocity = Vector3.zero;
             transform.position = new Vector3(transform.position.x, transform.position.y, -1.08f);
         }
     }
@@ -62,9 +66,8 @@ public class Object_Controller : MonoBehaviour
     {
         if (useGravity)
         {
-            //Custom Gravity controller
-            Vector3 gravity = -9.81f * gravityScale * Vector3.back;
-            rb.AddForce(gravity, ForceMode.Acceleration);
+            height -= 0.0981f * gravityScale;
+            transform.Translate(Vector3.back * height, Space.Self);
         }
     }
 
