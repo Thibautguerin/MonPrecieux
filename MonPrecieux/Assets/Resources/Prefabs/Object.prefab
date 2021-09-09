@@ -189,10 +189,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 30
-  height: 5
+  height: 2
   gravityScale: 1.5
   rebond: 0.5
-  size: 0.6
+  size: 0.8
   canPickUp: 0
 --- !u!212 &3748399549129100637
 SpriteRenderer:
