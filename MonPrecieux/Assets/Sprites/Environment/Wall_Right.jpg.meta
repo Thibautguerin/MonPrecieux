@@ -91,13 +91,13 @@ TextureImporter:
     serializedVersion: 2
     sprites: []
     outline:
-    - - {x: -10, y: -98}
-      - {x: -10, y: 98}
+    - - {x: -2, y: -98}
+      - {x: -2, y: 98}
       - {x: 98, y: 98}
       - {x: 98, y: -98}
     physicsShape:
-    - - {x: -10, y: -98}
-      - {x: -10, y: 98}
+    - - {x: -2, y: -98}
+      - {x: -2, y: 98}
       - {x: 98, y: 98}
       - {x: 98, y: -98}
     bones: []

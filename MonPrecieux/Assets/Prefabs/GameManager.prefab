@@ -43,3 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f044d1c194b37204d9ab28aa89aea0e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  T_Perc: {fileID: 0}
+  bumpScaleFactor: 1.2
+  bumpSpeed: 0.025
