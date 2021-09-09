@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 6284213575363248761}
   - component: {fileID: 2203790765033398034}
   m_Layer: 0
-  m_Name: Point Light 2D
+  m_Name: Point Light Side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,6 +220,8 @@ Transform:
   m_Children:
   - {fileID: 1155594743}
   - {fileID: 6284213575363248761}
+  - {fileID: 2198128401988293313}
+  - {fileID: 6829849757130022319}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -238,7 +240,13 @@ MonoBehaviour:
   speed: 5
   lookBottomRight: {fileID: 21300000, guid: 12e352966b99bdb44b8a84987af6143e, type: 3}
   lookBottomRightTorch: {fileID: 21300000, guid: 0dbbc349825d8db41b01f7ac8951d641, type: 3}
-  torchLight: {fileID: 1180585739736252534}
+  lookBottom: {fileID: 21300000, guid: 1946b7e6f4a6c7042ae59586d743d3a0, type: 3}
+  lookBottomTorch: {fileID: 21300000, guid: f8ac8af2d9ebc8d478d054b068f3dca8, type: 3}
+  lookTop: {fileID: 21300000, guid: bfefd2f1f16fba741be45630430a8915, type: 3}
+  lookTopTorch: {fileID: 21300000, guid: 819b04ddd5eddde459f7ada00f0fbe39, type: 3}
+  torchLightSide: {fileID: 1180585739736252534}
+  torchLightBottom: {fileID: 5228889440261493096}
+  torchLightTop: {fileID: 5152110224768412913}
   animationSpeed: 3
   animationToIdleSpeed: 3
   idleAnimationSpeed: 0.2
@@ -247,6 +255,8 @@ MonoBehaviour:
   maxIdleScale: 1.05
   rotator: {fileID: 1155594743}
   spriteRenderer: {fileID: 0}
+  spriteOrientation: 0
+  getTorch: 1
 --- !u!212 &3599208895716245248
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -287,7 +297,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0dbbc349825d8db41b01f7ac8951d641, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 819b04ddd5eddde459f7ada00f0fbe39, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -362,7 +372,7 @@ MonoBehaviour:
   - {x: -0.35552835, y: 0.18165183, z: 0}
   m_ShapePathHash: -235688131
   m_Mesh: {fileID: 0}
-  m_InstanceId: 35500
+  m_InstanceId: 47852
 --- !u!114 &2312003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,3 +385,147 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4391f18563d48fb46849df73d88ab05a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5152110224768412913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6829849757130022319}
+  - component: {fileID: 4252811318509415401}
+  m_Layer: 0
+  m_Name: Point Light Top
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6829849757130022319
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5152110224768412913}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.615, y: 1.116, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3599208895716245249}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4252811318509415401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5152110224768412913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_LightVolumeOpacity: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 1
+  m_ShadowVolumeIntensity: 0
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 4
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &5228889440261493096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2198128401988293313}
+  - component: {fileID: 7354863958746934518}
+  m_Layer: 0
+  m_Name: Point Light Bottom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2198128401988293313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5228889440261493096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.606, y: 1.018, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3599208895716245249}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7354863958746934518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5228889440261493096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_LightVolumeOpacity: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 1
+  m_ShadowVolumeIntensity: 0
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 4
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}

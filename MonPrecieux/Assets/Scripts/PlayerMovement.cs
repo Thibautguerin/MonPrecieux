@@ -1,6 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+public enum SpriteOrientation
+{
+    SIDE,
+    BOTTOM,
+    TOP
+}
+
 public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement Instance;
@@ -10,9 +18,15 @@ public class PlayerMovement : MonoBehaviour
     [Header("Sprites")]
     public Sprite lookBottomRight;
     public Sprite lookBottomRightTorch;
+    public Sprite lookBottom;
+    public Sprite lookBottomTorch;
+    public Sprite lookTop;
+    public Sprite lookTopTorch;
 
     [Header("Torch")]
-    public GameObject torchLight;
+    public GameObject torchLightSide;
+    public GameObject torchLightBottom;
+    public GameObject torchLightTop;
 
     [Header("Animations Speed")]
     public float animationSpeed = 3;
@@ -32,12 +46,17 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D playerbody;
     [HideInInspector]
     public SpriteRenderer spriteRenderer;
+    [HideInInspector]
+    public SpriteOrientation spriteOrientation;
 
     private float currentAnimRotation;
     private bool toggleAnimation;
     private float currentAnimScale;
 
     private Vector3 scaleSave;
+
+    [HideInInspector]
+    public bool getTorch = true;
 
     void Awake()
     {
@@ -71,7 +90,12 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        playerbody.velocity = new Vector2(h, v) * speed;
+        Vector2 newDirection = new Vector2(h, v);
+        if (newDirection.magnitude > 1)
+        {
+            newDirection.Normalize();
+        }
+        playerbody.velocity = newDirection * speed;
     }
 
     void orientation()
@@ -84,7 +108,74 @@ public class PlayerMovement : MonoBehaviour
         );
         rotator.up = direction;
 
-        scaleSave = Input.mousePosition.x < Screen.width / 2 ? new Vector3(-1, 1, 1) : Vector3.one;
+        Vector2 playerDirection = mousePosition - transform.position;
+        playerDirection.Normalize();
+
+        Debug.Log(playerDirection);
+        if (playerDirection.y > 0.9f)
+        {
+            if (spriteOrientation != SpriteOrientation.TOP)
+            {
+                spriteOrientation = SpriteOrientation.TOP;
+                if (getTorch)
+                {
+                    spriteRenderer.sprite = lookTopTorch;
+                    torchLightSide.SetActive(false);
+                    torchLightTop.SetActive(true);
+                    torchLightBottom.SetActive(false);
+                }
+                else
+                {
+                    spriteRenderer.sprite = lookTop;
+                    torchLightSide.SetActive(false);
+                    torchLightTop.SetActive(false);
+                    torchLightBottom.SetActive(false);
+                }
+            }
+        }
+        else if (playerDirection.y < -0.9f)
+        {
+            if (spriteOrientation != SpriteOrientation.BOTTOM)
+            {
+                spriteOrientation = SpriteOrientation.BOTTOM;
+                if (getTorch)
+                {
+                    spriteRenderer.sprite = lookBottomTorch;
+                    torchLightSide.SetActive(false);
+                    torchLightTop.SetActive(false);
+                    torchLightBottom.SetActive(true);
+                }
+                else
+                {
+                    spriteRenderer.sprite = lookBottom;
+                    torchLightSide.SetActive(false);
+                    torchLightTop.SetActive(false);
+                    torchLightBottom.SetActive(false);
+                }
+            }
+        }
+        else
+        {
+            if (spriteOrientation != SpriteOrientation.SIDE)
+            {
+                spriteOrientation = SpriteOrientation.SIDE;
+                if (getTorch)
+                {
+                    spriteRenderer.sprite = lookBottomRightTorch;
+                    torchLightSide.SetActive(true);
+                    torchLightTop.SetActive(false);
+                    torchLightBottom.SetActive(false);
+                }
+                else
+                {
+                    spriteRenderer.sprite = lookBottomRight;
+                    torchLightSide.SetActive(false);
+                    torchLightTop.SetActive(false);
+                    torchLightBottom.SetActive(false);
+                }
+            }
+            scaleSave = Input.mousePosition.x < Screen.width / 2 ? new Vector3(-1, 1, 1) : Vector3.one;
+        }
     }
 
     private void Animation()
