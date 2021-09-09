@@ -41,7 +41,7 @@ public class Lauch_Object : MonoBehaviour
                     break;
             }
 
-            Instantiate(Resources.Load<GameObject>("Prefabs/Object"), transform.parent, true).GetComponent<Object_Controller>().Setup(v3Pos.normalized, v2Pos);
+            Instantiate(Resources.Load<GameObject>("Prefabs/Torch"), transform.parent, true).GetComponent<Object_Controller>().Setup(v3Pos.normalized, v2Pos);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

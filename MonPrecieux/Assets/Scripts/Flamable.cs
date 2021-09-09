@@ -13,8 +13,12 @@ class Flamable : MonoBehaviour
     public Sprite ashes;
     void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
-        baseColor = sr.color;
+        if(Itsthetorch == false)
+        {
+            sr = GetComponent<SpriteRenderer>();
+            baseColor = sr.color;
+        }
+      
     }
     void Update()
     {
