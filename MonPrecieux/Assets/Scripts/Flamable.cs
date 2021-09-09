@@ -3,6 +3,7 @@ class Flamable : MonoBehaviour
 {
     public bool isBurning = false;
     public bool hasBurned = false;
+    public bool Itsthetorch = false;
     public float timer = 0;
     public float timeToBurn = 5;
     public GameObject prefab;
@@ -17,12 +18,12 @@ class Flamable : MonoBehaviour
     }
     void Update()
     {
-        if (timer > 0)
+        if (timer > 0 && Itsthetorch == false)
         {
             timer -= Time.deltaTime;
             sr.color = new Color(baseColor.r * timer / timeToBurn, baseColor.g * timer / timeToBurn, baseColor.b * timer / timeToBurn);
         }
-        else if (isBurning == true)
+        else if (isBurning == true && Itsthetorch == false)
         {
             hasBurned = true;
             isBurning = false;
@@ -37,7 +38,7 @@ class Flamable : MonoBehaviour
         if (obj != null && hasBurned == false)
         {
             Debug.Log("C'est bon");
-            if (obj.isBurning == true)
+            if (obj.isBurning == true && Itsthetorch == false)
             {
                 timer = timeToBurn;
                 isBurning = true;

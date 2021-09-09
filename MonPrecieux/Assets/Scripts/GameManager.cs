@@ -16,7 +16,7 @@ class GameManager : MonoBehaviour
             foreach (var i in flammables)
                 if (i.hasBurned) hasBurned++;
             var perc = hasBurned / flammables.Length * 100;
-            Debug.Log(perc);
+           // Debug.Log(perc);
         }
     }
 }
