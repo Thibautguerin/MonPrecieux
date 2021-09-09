@@ -56,9 +56,13 @@ public class Enemy : MonoBehaviour
     public Sprite spriteFocusPlayer;
     public Sprite spriteLosePlayer;
 
+    [Header("Sounds")]
+    public AudioClip[] walkSounds;
+
     private Transform target;
     private NavMeshAgent agent;
     private SpriteRenderer spriteRenderer;
+    private AudioSource audioSource;
     [HideInInspector]
     public SpriteOrientation spriteOrientation;
 
@@ -90,6 +94,7 @@ public class Enemy : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
 
@@ -221,6 +226,7 @@ public class Enemy : MonoBehaviour
                 {
                     toggleAnimation = false;
                     currentAnimRotation = Mathf.Max(currentAnimRotation - Time.deltaTime * animationSpeed * agent.velocity.magnitude, -1);
+                    PlayWalkSound();
                 }
                 else
                 {
@@ -233,6 +239,7 @@ public class Enemy : MonoBehaviour
                 {
                     toggleAnimation = true;
                     currentAnimRotation = Mathf.Min(currentAnimRotation + Time.deltaTime * animationSpeed * agent.velocity.magnitude, 1);
+                    PlayWalkSound();
                 }
                 else
                 {
@@ -341,6 +348,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void PlayWalkSound()
+    {
+        if (walkSounds.Length > 0)
+        {
+            int randomSound = Random.Range(0, walkSounds.Length);
+            audioSource.PlayOneShot(walkSounds[randomSound], 0.2f);
+        }
+    }
+
     public void Stun()
     {
         currentStunnedDuration = stunnedDuration;
@@ -365,7 +381,7 @@ public class Enemy : MonoBehaviour
                 agent.speed = chaseSpeed;
                 statusRenderer.sprite = spriteFocusPlayer;
             }
-            else if (hit.collider.CompareTag("Torch") && collision.CompareTag("Torch"))
+            /*else if (hit.collider.CompareTag("Torch") && collision.CompareTag("Torch"))
             {
                 targetType = TargetType.TORCH;
                 target = collision.transform;
@@ -374,7 +390,7 @@ public class Enemy : MonoBehaviour
                 focusTarget = true;
                 agent.speed = chaseSpeed;
                 statusRenderer.sprite = spriteFocusPlayer;
-            }
+            }*/
         }
     }
 
@@ -398,7 +414,7 @@ public class Enemy : MonoBehaviour
                     agent.speed = chaseSpeed;
                     statusRenderer.sprite = spriteFocusPlayer;
                 }
-                else if (hit.collider.CompareTag("Torch") && collision.CompareTag("Torch"))
+                /*else if (hit.collider.CompareTag("Torch") && collision.CompareTag("Torch"))
                 {
                     targetType = TargetType.TORCH;
                     target = collision.transform;
@@ -407,7 +423,7 @@ public class Enemy : MonoBehaviour
                     focusTarget = true;
                     agent.speed = chaseSpeed;
                     statusRenderer.sprite = spriteFocusPlayer;
-                }
+                }*/
             }
         }
     }

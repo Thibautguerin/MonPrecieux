@@ -38,12 +38,16 @@ public class PlayerMovement : MonoBehaviour
     public float minIdleScale = 0.95f;
     public float maxIdleScale = 1.05f;
 
+    [Header("Sounds")]
+    public AudioClip[] walkSounds;
+
     [Space]
     public Transform rotator;
 
     private float h;
     private float v;
     private Rigidbody2D playerbody;
+    private AudioSource audioSource;
     [HideInInspector]
     public SpriteRenderer spriteRenderer;
     [HideInInspector]
@@ -77,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
     {
         playerbody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
         scaleSave = transform.localScale;
     }
 
@@ -188,6 +193,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     toggleAnimation = false;
                     currentAnimRotation = Mathf.Max(currentAnimRotation - Time.deltaTime * animationSpeed * playerbody.velocity.magnitude, -1);
+                    PlayWalkSound();
                 }
                 else
                 {
@@ -200,6 +206,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     toggleAnimation = true;
                     currentAnimRotation = Mathf.Min(currentAnimRotation + Time.deltaTime * animationSpeed * playerbody.velocity.magnitude, 1);
+                    PlayWalkSound();
                 }
                 else
                 {
@@ -258,5 +265,14 @@ public class PlayerMovement : MonoBehaviour
         transform.rotation = newRotation;
 
         transform.localScale = scaleSave * currentAnimScale;
+    }
+
+    private void PlayWalkSound()
+    {
+        if (walkSounds.Length > 0)
+        {
+            int randomSound = Random.Range(0, walkSounds.Length);
+            audioSource.PlayOneShot(walkSounds[randomSound], 0.2f);
+        }
     }
 }

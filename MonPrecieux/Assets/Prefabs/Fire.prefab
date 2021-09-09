@@ -4759,7 +4759,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b8ca8bb15ad2eab429d04aae73919f2d, type: 2}
+  - {fileID: 2100000, guid: f267afbab51e75f43be33fe5b1bfd295, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4881,6 +4881,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4767169129554853452, guid: 685f991e2b2bd2a4189ff95f3c2ec377, type: 3}
+      propertyPath: ShapeModule.m_Texture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767169129554853452, guid: 685f991e2b2bd2a4189ff95f3c2ec377, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 0.2
       objectReference: {fileID: 0}
@@ -4895,7 +4899,7 @@ PrefabInstance:
     - target: {fileID: 7014587434764890990, guid: 685f991e2b2bd2a4189ff95f3c2ec377, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 30cb1cd33eba968469edd7c39d11dd34, type: 2}
+      objectReference: {fileID: 2100000, guid: f267afbab51e75f43be33fe5b1bfd295, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 685f991e2b2bd2a4189ff95f3c2ec377, type: 3}
 --- !u!4 &1773814121010006855 stripped

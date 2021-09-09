@@ -5,10 +5,13 @@ class Flamable : MonoBehaviour
     public bool hasBurned = false;
     public bool Itsthetorch = false;
     public bool Itsagard = false;
+    [HideInInspector]
     public float timer = 0;
-    float timeToBurn = 3;
+    public float timeToBurn = 3;
     public GameObject prefab;
+    [HideInInspector]
     public GameObject fire;
+    [HideInInspector]
     public SpriteRenderer sr;
     public Color baseColor;
     public Sprite ashes;
