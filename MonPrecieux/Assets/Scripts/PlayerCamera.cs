@@ -1,7 +1,7 @@
 using UnityEngine;
 class PlayerCamera : MonoBehaviour
 {
-    public Camera camera;
+    public Camera cam;
     public Transform target;
     [Range(0, 1)]
     public float movSpeed;
@@ -12,7 +12,7 @@ class PlayerCamera : MonoBehaviour
     Vector3 offset;
     void Start()
     {
-        camera.orthographicSize = zoomSize;
+        cam.orthographicSize = zoomSize;
         offset = transform.position;
     }
     void FixedUpdate()
@@ -20,9 +20,9 @@ class PlayerCamera : MonoBehaviour
         if (!UI.instance.isMenued)
         {
             transform.position = Vector3.Lerp(transform.position, target.position + offset, movSpeed);
-            camera.orthographicSize = Input.GetKey(KeyCode.F) ?
-                camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, dezoomSize, zoomSpeed) :
-                camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, zoomSize, zoomSpeed);
+            cam.orthographicSize = Input.GetKey(KeyCode.F) ?
+                cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, dezoomSize, zoomSpeed) :
+                cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, zoomSize, zoomSpeed);
         }
     }
 }

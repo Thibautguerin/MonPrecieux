@@ -55,13 +55,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946075141}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
-  m_LocalScale: {x: 0.3, y: 1.2, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 1155594743}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &1946075143
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -102,7 +102,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3625043607559282579, guid: 045b15ec09bba42448d89db77fa6f20a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a72a40ff95ca893409bf67ab612d6d9d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -372,7 +372,7 @@ MonoBehaviour:
   - {x: -0.35552835, y: 0.18165183, z: 0}
   m_ShapePathHash: -235688131
   m_Mesh: {fileID: 0}
-  m_InstanceId: 47852
+  m_InstanceId: 64234
 --- !u!114 &2312003
 MonoBehaviour:
   m_ObjectHideFlags: 0
