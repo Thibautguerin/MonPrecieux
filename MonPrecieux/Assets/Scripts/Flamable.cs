@@ -4,6 +4,7 @@ class Flamable : MonoBehaviour
     public bool isBurning = false;
     public bool hasBurned = false;
     public bool Itsthetorch = false;
+    public bool Itsagard = false;
     public float timer = 0;
     public float timeToBurn = 5;
     public GameObject prefab;
@@ -25,7 +26,11 @@ class Flamable : MonoBehaviour
         if (timer > 0 && Itsthetorch == false)
         {
             timer -= Time.deltaTime;
-            sr.color = new Color(baseColor.r * timer / timeToBurn, baseColor.g * timer / timeToBurn, baseColor.b * timer / timeToBurn);
+            if (Itsagard == false)
+            {
+                sr.color = new Color(baseColor.r * timer / timeToBurn, baseColor.g * timer / timeToBurn, baseColor.b * timer / timeToBurn);
+            }
+           
         }
         else if (isBurning == true && Itsthetorch == false)
         {
