@@ -1,23 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class GameManager : MonoBehaviour
+class GameManager : MonoBehaviour
 {
-    private static GameManager Instance;
-
-    void Awake()
+    public static GameManager instance;
+    Flamable[] flammables;
+    void Awake() { if (instance == null) { instance = this; DontDestroyOnLoad(gameObject); } else Destroy(gameObject); }
+    void Start()
     {
-        #region Singleton
-        if (Instance == null)
+        flammables = FindObjectsOfType<Flamable>();
+    }
+    void Update()
+    {
+        if (flammables.Length > 0)
         {
-            Instance = this;
-            //DontDestroyOnLoad(this.gameObject);
+            var hasBurned = 0;
+            foreach (var i in flammables)
+                if (i.hasBurned) hasBurned++;
+            var perc = hasBurned / flammables.Length * 100;
+            Debug.Log(perc);
         }
-        else
-        {
-            Destroy(this);
-        }
-        #endregion
     }
 }
