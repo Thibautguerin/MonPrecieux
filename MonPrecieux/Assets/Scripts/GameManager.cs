@@ -12,26 +12,12 @@ class GameManager : MonoBehaviour
     float hasBurned;
     Flamable[] flammables;
     void Awake() { if (instance == null) { instance = this; DontDestroyOnLoad(gameObject); } else Destroy(gameObject); }
-    void Start()
-    {
-        flammables = FindObjectsOfType<Flamable>();
-    }
-    void Update()
-    {
-        // if (flammables.Length > 0)
-        // {
-        //     var hasBurned = 0;
-        //     foreach (var i in flammables)
-        //         if (i.hasBurned) hasBurned++;
-        //     var perc = hasBurned / flammables.Length * 100;
-        // }
-        if (Input.GetKeyDown(KeyCode.C)) IncrementPerc();
-        T_Perc.gameObject.transform.localScale = Vector2.Lerp(T_Perc.gameObject.transform.localScale, Vector2.one, bumpSpeed);
-    }
-    public void IncrementPerc()
+    void Start() { flammables = FindObjectsOfType<Flamable>(); }
+    void Update() { T_Perc.gameObject.transform.localScale = Vector2.Lerp(T_Perc.gameObject.transform.localScale, Vector2.one, bumpSpeed); }
+    public void IncPerc()
     {
         hasBurned++;
-        float perc = hasBurned / 10;
+        float perc = hasBurned / flammables.Length;
         if (perc <= 1)
         {
             T_Perc.SetText("{0:0}%", perc * 100);

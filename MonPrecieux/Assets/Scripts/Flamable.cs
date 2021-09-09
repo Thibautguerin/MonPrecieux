@@ -14,12 +14,11 @@ class Flamable : MonoBehaviour
     public Sprite ashes;
     void Start()
     {
-        if(Itsthetorch == false)
+        if (Itsthetorch == false)
         {
             sr = GetComponent<SpriteRenderer>();
             baseColor = sr.color;
         }
-      
     }
     void Update()
     {
@@ -30,7 +29,6 @@ class Flamable : MonoBehaviour
             {
                 sr.color = new Color(baseColor.r * timer / timeToBurn, baseColor.g * timer / timeToBurn, baseColor.b * timer / timeToBurn);
             }
-           
         }
         else if (isBurning == true && Itsthetorch == false)
         {
@@ -38,7 +36,7 @@ class Flamable : MonoBehaviour
             isBurning = false;
             sr.sprite = ashes;
             fire.GetComponent<ParticleSystem>().Stop();
-            GameManager.instance.IncrementPerc();
+            GameManager.instance.IncPerc();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -48,7 +46,7 @@ class Flamable : MonoBehaviour
         if (obj != null && hasBurned == false)
         {
             Debug.Log("C'est bon Trigger");
-            if (obj.isBurning == true )
+            if (obj.isBurning == true)
             {
                 timer = timeToBurn;
                 isBurning = true;
@@ -61,5 +59,4 @@ class Flamable : MonoBehaviour
             }
         }
     }
-  
 }
