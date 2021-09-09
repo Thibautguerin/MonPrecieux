@@ -17,6 +17,11 @@ public class Enemy : MonoBehaviour
     public float stunnedDuration = 2;
     public float lives;
 
+    [Header("Sprites")]
+    public Sprite lookLeft;
+    public Sprite lookBottom;
+    public Sprite lookTop;
+
     [Header("Target")]
     public float loseFocusDurationMin;
     public float loseFocusDurationMax;
