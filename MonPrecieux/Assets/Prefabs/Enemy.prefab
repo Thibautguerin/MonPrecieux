@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 4433025399264382364}
   - component: {fileID: 4433025399264382365}
   - component: {fileID: 8125516598654416929}
+  - component: {fileID: 4732249755249270595}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -470,7 +471,30 @@ MonoBehaviour:
   - {x: -0.44108093, y: 0.31085038, z: 0}
   m_ShapePathHash: -818665734
   m_Mesh: {fileID: 0}
-  m_InstanceId: 53338
+  m_InstanceId: 67728
+--- !u!114 &4732249755249270595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4433025399264382375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f2c4a59311a8c64991b230f0e17f870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBurning: 0
+  hasBurned: 0
+  Itsthetorch: 0
+  Itsagard: 1
+  timer: 0
+  timeToBurn: 5
+  prefab: {fileID: 3542513724633365298, guid: ed90d01a4ab507346a698f0c14a604a6, type: 3}
+  fire: {fileID: 0}
+  sr: {fileID: 0}
+  baseColor: {r: 0, g: 0, b: 0, a: 0}
+  ashes: {fileID: 21300000, guid: 211915bb0ae11804cb2fdd64f8d8fbe0, type: 3}
 --- !u!1 &4433025400032803989
 GameObject:
   m_ObjectHideFlags: 0
