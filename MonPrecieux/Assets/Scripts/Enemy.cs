@@ -22,6 +22,11 @@ public class Enemy : MonoBehaviour
     public Sprite lookBottom;
     public Sprite lookTop;
 
+    [Header("Light")]
+    public GameObject torchLightSide;
+    public GameObject torchLightBottom;
+    public GameObject torchLightTop;
+
     [Header("Target")]
     public float loseFocusDurationMin;
     public float loseFocusDurationMax;
@@ -51,6 +56,9 @@ public class Enemy : MonoBehaviour
 
     private Transform target;
     private NavMeshAgent agent;
+    private SpriteRenderer spriteRenderer;
+    [HideInInspector]
+    public SpriteOrientation spriteOrientation;
 
     private float currentLoseFocusDuration;
 
@@ -79,6 +87,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
 
@@ -285,13 +294,47 @@ public class Enemy : MonoBehaviour
 
     private void Orientation()
     {
-        if (agent.velocity.x >= 0)
+        if (agent.velocity.y > 0.9f)
         {
-            scaleSave = new Vector3(-1, 1, 1);
+            if (spriteOrientation != SpriteOrientation.TOP)
+            {
+                spriteOrientation = SpriteOrientation.TOP;
+                spriteRenderer.sprite = lookTop;
+                torchLightSide.SetActive(false);
+                torchLightTop.SetActive(true);
+                torchLightBottom.SetActive(false);
+            }
+        }
+        else if (agent.velocity.y < -0.9f)
+        {
+            if (spriteOrientation != SpriteOrientation.BOTTOM)
+            {
+                spriteOrientation = SpriteOrientation.BOTTOM;
+                spriteRenderer.sprite = lookBottom;
+                torchLightSide.SetActive(false);
+                torchLightTop.SetActive(false);
+                torchLightBottom.SetActive(true);
+            }
         }
         else
         {
-            scaleSave = Vector3.one;
+            if (spriteOrientation != SpriteOrientation.SIDE)
+            {
+                spriteOrientation = SpriteOrientation.SIDE;
+                spriteRenderer.sprite = lookLeft;
+                torchLightSide.SetActive(true);
+                torchLightTop.SetActive(false);
+                torchLightBottom.SetActive(false);
+            }
+
+            if (agent.velocity.x >= 0)
+            {
+                scaleSave = new Vector3(-1, 1, 1);
+            }
+            else
+            {
+                scaleSave = Vector3.one;
+            }
         }
     }
 
