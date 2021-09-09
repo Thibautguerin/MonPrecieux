@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1419082085545188998}
   - component: {fileID: 194013146723152043}
+  - component: {fileID: 144776855993432229}
   m_Layer: 0
   m_Name: Collider2D
   m_TagString: Untagged
@@ -41,12 +42,26 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.9
+--- !u!114 &144776855993432229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364336760514779613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f2c4a59311a8c64991b230f0e17f870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsOnFire: 1
+  prefab: {fileID: 5862695611300823382, guid: 854405e6e94d3c54e9dc5ff913b7e583, type: 3}
 --- !u!1 &1880424515315042348
 GameObject:
   m_ObjectHideFlags: 0
