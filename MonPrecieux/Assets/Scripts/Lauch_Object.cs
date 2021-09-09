@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Lauch_Object : MonoBehaviour
 {
+    private bool getTorch;
+    void Awake()
+    {
+        getTorch = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -12,10 +18,27 @@ public class Lauch_Object : MonoBehaviour
         v3Pos = Camera.main.ScreenToWorldPoint(v3Pos);
         v3Pos -= transform.position;
 
+        //Player position
+        Vector2 v2Pos = new Vector2(transform.position.x + 1.5f * transform.localScale.x, transform.position.y);
+
         //Press Left Click == Launch
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && getTorch)
         {
-            Instantiate(Resources.Load<GameObject>("Prefabs/Object"), transform, true).GetComponent<Object_Controller>().Setup(v3Pos.normalized);
+            getTorch = false;
+            Instantiate(Resources.Load<GameObject>("Prefabs/Object"), transform.parent, true).GetComponent<Object_Controller>().Setup(v3Pos.normalized, v2Pos);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //Parent == Object
+        if (collision.transform.parent.CompareTag("Torch"))
+        {
+            //If Object stop bouncing, canPickUp == true
+            if (collision.gameObject.GetComponentInParent<Object_Controller>().canPickUp)
+            {
+                getTorch = true;
+                Destroy(collision.transform.parent.gameObject);
+            }
         }
     }
 }

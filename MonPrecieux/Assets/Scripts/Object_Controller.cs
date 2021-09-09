@@ -9,25 +9,28 @@ public class Object_Controller : MonoBehaviour
     public float gravityScale;
     [Range(0.0f, 1f)]
     public float rebond;
+    public bool canPickUp;
     
     private Rigidbody rb;
     private bool useGravity;
 
     private void Awake()
     {
-        //Get position of player
-        transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y, transform.position.z);
-
         //Rigibody component
         rb = GetComponent<Rigidbody>();
 
+        //Initialize Variable
+        canPickUp = false;
         useGravity = true;
     }
 
-    public void Setup(Vector3 vector3)
+    public void Setup(Vector3 vector3, Vector2 vector2)
     {
         //Initial velocity
         rb.velocity = new Vector3(vector3.x * distance, vector3.y * distance, -height);
+
+        //Get position of player
+        transform.position = new Vector3(vector2.x, vector2.y, transform.position.z);
     }
 
     // Update is called once per frame
@@ -45,6 +48,7 @@ public class Object_Controller : MonoBehaviour
         //Stop rebond
         else if (transform.position.z >= -1.09f)
         {
+            canPickUp = true;
             useGravity = false;
             rb.velocity = Vector3.zero;
             transform.position = new Vector3(transform.position.x, transform.position.y, -1.08f);
