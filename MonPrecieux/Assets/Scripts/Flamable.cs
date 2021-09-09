@@ -38,6 +38,7 @@ class Flamable : MonoBehaviour
             isBurning = false;
             sr.sprite = ashes;
             fire.GetComponent<ParticleSystem>().Stop();
+            GameManager.instance.IncrementPerc();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
