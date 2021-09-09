@@ -111,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 playerDirection = mousePosition - transform.position;
         playerDirection.Normalize();
 
-        Debug.Log(playerDirection);
+        //Debug.Log(playerDirection);
         if (playerDirection.y > 0.9f)
         {
             if (spriteOrientation != SpriteOrientation.TOP)
