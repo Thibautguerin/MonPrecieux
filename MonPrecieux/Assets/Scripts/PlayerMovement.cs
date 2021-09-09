@@ -3,7 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement Instance;
+
     public float speed = 5f;
+
+    [Header("Sprites")]
+    public Sprite lookBottomRight;
+    public Sprite lookBottomRightTorch;
+
+    [Header("Torch")]
+    public GameObject torchLight;
 
     [Header("Animations Speed")]
     public float animationSpeed = 3;
@@ -21,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     private float h;
     private float v;
     private Rigidbody2D playerbody;
+    [HideInInspector]
+    public SpriteRenderer spriteRenderer;
 
     private float currentAnimRotation;
     private bool toggleAnimation;
@@ -28,9 +39,25 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 scaleSave;
 
+    void Awake()
+    {
+        #region Singleton
+        if (Instance == null)
+        {
+            Instance = this;
+            //DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this);
+        }
+        #endregion
+    }
+
     void Start()
     {
         playerbody = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         scaleSave = transform.localScale;
     }
 

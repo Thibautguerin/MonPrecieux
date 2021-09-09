@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class Lauch_Object : MonoBehaviour
 {
-    private bool getTorch;
-    void Awake()
-    {
-        getTorch = true;
-    }
+    private bool getTorch = true;
 
     // Update is called once per frame
     void Update()
@@ -25,6 +21,8 @@ public class Lauch_Object : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && getTorch)
         {
             getTorch = false;
+            PlayerMovement.Instance.spriteRenderer.sprite = PlayerMovement.Instance.lookBottomRight;
+            PlayerMovement.Instance.torchLight.SetActive(false);
             Instantiate(Resources.Load<GameObject>("Prefabs/Object"), transform.parent, true).GetComponent<Object_Controller>().Setup(v3Pos.normalized, v2Pos);
         }
     }
@@ -38,6 +36,8 @@ public class Lauch_Object : MonoBehaviour
             {
                 getTorch = true;
                 Destroy(collision.transform.parent.gameObject);
+                PlayerMovement.Instance.spriteRenderer.sprite = PlayerMovement.Instance.lookBottomRightTorch;
+                PlayerMovement.Instance.torchLight.SetActive(true);
             }
         }
     }
