@@ -6,7 +6,7 @@ class Flamable : MonoBehaviour
     public bool Itsthetorch = false;
     public bool Itsagard = false;
     public float timer = 0;
-    public float timeToBurn = 5;
+    public float timeToBurn = 3;
     public GameObject prefab;
     public GameObject fire;
     public SpriteRenderer sr;
@@ -48,7 +48,10 @@ class Flamable : MonoBehaviour
             Debug.Log("C'est bon Trigger");
             if (obj.isBurning == true)
             {
-                timer = timeToBurn;
+                if (timer == 0)
+                {
+                    timer = timeToBurn;
+                }
                 isBurning = true;
                 fire = Instantiate(prefab,
                     new Vector3(transform.position.x,
