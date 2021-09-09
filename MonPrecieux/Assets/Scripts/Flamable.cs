@@ -41,8 +41,8 @@ class Flamable : MonoBehaviour
         Flamable obj = collision.GetComponent<Flamable>();
         if (obj != null && hasBurned == false)
         {
-            Debug.Log("C'est bon");
-            if (obj.isBurning == true && Itsthetorch == false)
+            Debug.Log("C'est bon Trigger");
+            if (obj.isBurning == true )
             {
                 timer = timeToBurn;
                 isBurning = true;
@@ -55,4 +55,5 @@ class Flamable : MonoBehaviour
             }
         }
     }
+  
 }

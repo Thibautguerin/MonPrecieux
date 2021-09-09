@@ -49,7 +49,7 @@ public class Lauch_Object : MonoBehaviour
         //Parent == Object
         if (collision.transform.CompareTag("Torch"))
         {
-            Debug.Log("1");
+            //Debug.Log("1");
             //If Object stop bouncing, canPickUp == true
             if (collision.gameObject.GetComponent<Object_Controller>().canPickUp)
             {
