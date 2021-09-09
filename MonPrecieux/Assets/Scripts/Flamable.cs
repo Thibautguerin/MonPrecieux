@@ -50,6 +50,7 @@ public class Flamable: MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (gameObject.transform.parent.CompareTag("Torch")) { Debug.Log(collision.name); }
         Flamable obj = collision.GetComponent<Flamable>();
         if (obj!= null && hasburn==false)
         {

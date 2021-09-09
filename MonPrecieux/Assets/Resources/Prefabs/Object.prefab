@@ -62,6 +62,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOnFire: 1
   prefab: {fileID: 5862695611300823382, guid: 854405e6e94d3c54e9dc5ff913b7e583, type: 3}
+  hasburn: 0
+  timer: 0
+  Timetoburn: 5
+  Sr: {fileID: 0}
+  BaseColor: {r: 0, g: 0, b: 0, a: 0}
+  Ashe: {fileID: 0}
+  Fire: {fileID: 0}
 --- !u!1 &1880424515315042348
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,9 +189,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 30
-  height: 5
+  height: 2
   gravityScale: 1.5
   rebond: 0.5
+  size: 0.8
   canPickUp: 0
 --- !u!212 &3748399549129100637
 SpriteRenderer:

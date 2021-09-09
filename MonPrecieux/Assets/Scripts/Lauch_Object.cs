@@ -44,34 +44,38 @@ public class Lauch_Object : MonoBehaviour
             Instantiate(Resources.Load<GameObject>("Prefabs/Object"), transform.parent, true).GetComponent<Object_Controller>().Setup(v3Pos.normalized, v2Pos);
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Parent == Object
-        if (collision.transform.parent.CompareTag("Torch"))
+        //Check parent
+        if (collision.transform.parent != null)
         {
-            //If Object stop bouncing, canPickUp == true
-            if (collision.gameObject.GetComponentInParent<Object_Controller>().canPickUp)
+            //Parent == Object
+            if (collision.transform.parent.CompareTag("Torch"))
             {
-                getTorch = true;
-                PlayerMovement.Instance.getTorch = true;
-                Destroy(collision.transform.parent.gameObject);
-
-                switch (PlayerMovement.Instance.spriteOrientation)
+                //If Object stop bouncing, canPickUp == true
+                if (collision.gameObject.GetComponentInParent<Object_Controller>().canPickUp)
                 {
-                    case SpriteOrientation.SIDE:
-                        PlayerMovement.Instance.spriteRenderer.sprite = PlayerMovement.Instance.lookBottomRightTorch;
-                        PlayerMovement.Instance.torchLightSide.SetActive(true);
-                        break;
-                    case SpriteOrientation.BOTTOM:
-                        PlayerMovement.Instance.spriteRenderer.sprite = PlayerMovement.Instance.lookBottomTorch;
-                        PlayerMovement.Instance.torchLightBottom.SetActive(true);
-                        break;
-                    case SpriteOrientation.TOP:
-                        PlayerMovement.Instance.spriteRenderer.sprite = PlayerMovement.Instance.lookTopTorch;
-                        PlayerMovement.Instance.torchLightTop.SetActive(true);
-                        break;
-                    default:
-                        break;
+                    getTorch = true;
+                    PlayerMovement.Instance.getTorch = true;
+                    Destroy(collision.transform.parent.gameObject);
+
+                    switch (PlayerMovement.Instance.spriteOrientation)
+                    {
+                        case SpriteOrientation.SIDE:
+                            PlayerMovement.Instance.spriteRenderer.sprite = PlayerMovement.Instance.lookBottomRightTorch;
+                            PlayerMovement.Instance.torchLightSide.SetActive(true);
+                            break;
+                        case SpriteOrientation.BOTTOM:
+                            PlayerMovement.Instance.spriteRenderer.sprite = PlayerMovement.Instance.lookBottomTorch;
+                            PlayerMovement.Instance.torchLightBottom.SetActive(true);
+                            break;
+                        case SpriteOrientation.TOP:
+                            PlayerMovement.Instance.spriteRenderer.sprite = PlayerMovement.Instance.lookTopTorch;
+                            PlayerMovement.Instance.torchLightTop.SetActive(true);
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
         }

@@ -9,6 +9,9 @@ public class Object_Controller : MonoBehaviour
     public float gravityScale;
     [Range(0.0f, 1f)]
     public float rebond;
+    [Range(0.0f, 1f)]
+    public float size;
+    [HideInInspector]
     public bool canPickUp;
     
     private Rigidbody rb;
@@ -37,7 +40,7 @@ public class Object_Controller : MonoBehaviour
     void Update()
     {
         //Change scale by Y position to do some Gravity effect
-        transform.localScale = new Vector2(Mathf.Abs(transform.position.z) / 2, Mathf.Abs(transform.position.z) / 2);
+        transform.localScale = new Vector2(Mathf.Abs(transform.position.z) * size, Mathf.Abs(transform.position.z) * size);
 
         //Rebond
         if (transform.position.z >= -1.09f && rb.velocity.z > 1f)
@@ -64,4 +67,5 @@ public class Object_Controller : MonoBehaviour
             rb.AddForce(gravity, ForceMode.Acceleration);
         }
     }
+
 }
