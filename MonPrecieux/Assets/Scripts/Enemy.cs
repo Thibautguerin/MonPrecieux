@@ -213,7 +213,6 @@ public class Enemy : MonoBehaviour
 
     private void Animation()
     {
-        
         if (agent.velocity.magnitude > 0)
         {
             if (toggleAnimation)
@@ -329,13 +328,15 @@ public class Enemy : MonoBehaviour
                 torchLightBottom.SetActive(false);
             }
 
-            if (agent.velocity.x >= 0)
+            if (agent.velocity.x > 0)
             {
                 scaleSave = new Vector3(-1, 1, 1);
+                statusRenderer.transform.localScale = new Vector3(-0.7f, 0.7f, 1f);
             }
-            else
+            else if (agent.velocity.x < 0)
             {
                 scaleSave = Vector3.one;
+                statusRenderer.transform.localScale = new Vector3(0.7f, 0.7f, 1f);
             }
         }
     }
