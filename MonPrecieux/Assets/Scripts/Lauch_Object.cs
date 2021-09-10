@@ -4,13 +4,12 @@ using UnityEngine;
 public class Lauch_Object : MonoBehaviour
 {
     public GameObject torchPrefab;
+    public GameObject pointer;
     private bool getTorch = true;
-    // Update is called once per frame
     void Update()
     {
         //Mouse position
-        Vector3 v3Pos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
-        v3Pos = Camera.main.ScreenToWorldPoint(v3Pos);
+        Vector3 v3Pos = pointer.transform.position;
         v3Pos -= transform.position;
         //Player position
         Vector2 v2Pos = new Vector2(transform.position.x, transform.position.y);
