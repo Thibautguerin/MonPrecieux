@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 class GameManager : MonoBehaviour
 {
@@ -24,5 +25,9 @@ class GameManager : MonoBehaviour
             T_Perc.gameObject.transform.localScale *= bumpScaleFactor;
             T_Perc.color = new Color(T_Perc.color.r, T_Perc.color.g * (1 - perc), T_Perc.color.b);
         }
+    }
+    public void StartLevel(string name)
+    {
+        SceneManager.LoadScene(name);
     }
 }

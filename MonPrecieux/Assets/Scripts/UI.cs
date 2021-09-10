@@ -78,7 +78,7 @@ class UI : MonoBehaviour
         isMenued = false;
         isHTP = false;
         showHTP = false;
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("1");
     }
     public void Menu()
     {
