@@ -355,7 +355,7 @@ public class Enemy : MonoBehaviour
         if (walkSounds.Length > 0)
         {
             int randomSound = Random.Range(0, walkSounds.Length);
-            audioSource.PlayOneShot(walkSounds[randomSound], 0.2f);
+            audioSource.PlayOneShot(walkSounds[randomSound], 0.05f);
         }
     }
 
