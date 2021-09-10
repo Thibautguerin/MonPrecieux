@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Lauch_Object : MonoBehaviour
 {
+    public GameObject torchPrefab;
     private bool getTorch = true;
 
     // Update is called once per frame
@@ -23,6 +24,9 @@ public class Lauch_Object : MonoBehaviour
             getTorch = false;
             PlayerMovement.Instance.getTorch = false;
 
+            // Play sound
+            PlayerMovement.Instance.PlayThrowTorchSound();
+
             switch (PlayerMovement.Instance.spriteOrientation)
             {
                 case SpriteOrientation.SIDE:
@@ -41,7 +45,7 @@ public class Lauch_Object : MonoBehaviour
                     break;
             }
 
-            Instantiate(Resources.Load<GameObject>("Prefabs/Torch"), transform.parent, true).GetComponent<Object_Controller>().Setup(v3Pos.normalized, v2Pos);
+            Instantiate(torchPrefab, transform.parent, true).GetComponent<Object_Controller>().Setup(v3Pos.normalized, v2Pos);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

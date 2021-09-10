@@ -259,6 +259,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 93bd906f3a6c8514996ca51ff96bf192, type: 3}
   - {fileID: 8300000, guid: 39da4499ffdb856409622d716a30cc1a, type: 3}
   - {fileID: 8300000, guid: 0c0a49f24d0f13b4cb0ead8329b455dc, type: 3}
+  throwTorchSound: {fileID: 8300000, guid: d47d8c337ff21e04db170b8f49e9c7e4, type: 3}
   rotator: {fileID: 1155594743}
   spriteRenderer: {fileID: 0}
   spriteOrientation: 0
@@ -378,7 +379,7 @@ MonoBehaviour:
   - {x: -0.35552835, y: 0.18165183, z: 0}
   m_ShapePathHash: -235688131
   m_Mesh: {fileID: 0}
-  m_InstanceId: 57038
+  m_InstanceId: 139528
 --- !u!114 &2312003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,6 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4391f18563d48fb46849df73d88ab05a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  torchPrefab: {fileID: 3028470044040045895, guid: ce1b45a29bb6348498258c3793c3b2d5, type: 3}
 --- !u!82 &6884707770254675606
 AudioSource:
   m_ObjectHideFlags: 0

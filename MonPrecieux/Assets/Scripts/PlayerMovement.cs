@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Sounds")]
     public AudioClip[] walkSounds;
+    public AudioClip throwTorchSound;
 
     [Space]
     public Transform rotator;
@@ -273,6 +274,14 @@ public class PlayerMovement : MonoBehaviour
         {
             int randomSound = Random.Range(0, walkSounds.Length);
             audioSource.PlayOneShot(walkSounds[randomSound], 0.2f);
+        }
+    }
+
+    public void PlayThrowTorchSound()
+    {
+        if (throwTorchSound)
+        {
+            audioSource.PlayOneShot(throwTorchSound, 1f);
         }
     }
 }

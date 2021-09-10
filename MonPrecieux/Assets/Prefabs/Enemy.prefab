@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 4433025399264382360}
   - component: {fileID: 4433025399264382363}
   - component: {fileID: 4433025399264382364}
+  - component: {fileID: 6834740259822094763}
   - component: {fileID: 4433025399264382365}
   - component: {fileID: 8125516598654416929}
   - component: {fileID: 4732249755249270595}
@@ -431,6 +432,32 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.6}
   serializedVersion: 2
   m_Radius: 3.5
+--- !u!61 &6834740259822094763
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4433025399264382375}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0022909045, y: 0.5069567}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.6, y: 0}
+    oldSize: {x: 2, y: 1.75}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1179127, y: 0.9044129}
+  m_EdgeRadius: 0
 --- !u!50 &4433025399264382365
 Rigidbody2D:
   serializedVersion: 4
@@ -479,7 +506,7 @@ MonoBehaviour:
   - {x: -0.44108093, y: 0.31085038, z: 0}
   m_ShapePathHash: -818665734
   m_Mesh: {fileID: 0}
-  m_InstanceId: 58148
+  m_InstanceId: 136762
 --- !u!114 &4732249755249270595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,17 +519,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2c4a59311a8c64991b230f0e17f870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToBurn: 6
+  itsTheTorch: 0
+  fireParticle: {fileID: 3542513724633365298, guid: ed90d01a4ab507346a698f0c14a604a6, type: 3}
+  ashesPrefab: {fileID: 1183739005991505985, guid: 1b51460f50585a040a3f321a70d3d357, type: 3}
+  objectAshesSprite: {fileID: 21300000, guid: 211915bb0ae11804cb2fdd64f8d8fbe0, type: 3}
+  fireSound: {fileID: 8300000, guid: 0222640e9ab21744b9971f1743eabaf2, type: 3}
   isBurning: 0
-  hasBurned: 0
-  Itsthetorch: 0
-  Itsagard: 1
-  timer: 0
-  timeToBurn: 3
-  prefab: {fileID: 3542513724633365298, guid: ed90d01a4ab507346a698f0c14a604a6, type: 3}
-  fire: {fileID: 0}
-  sr: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  ashes: {fileID: 21300000, guid: 211915bb0ae11804cb2fdd64f8d8fbe0, type: 3}
 --- !u!82 &1797753225357764610
 AudioSource:
   m_ObjectHideFlags: 0
