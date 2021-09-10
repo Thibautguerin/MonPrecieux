@@ -124,10 +124,16 @@ public class Enemy : MonoBehaviour
             currentAttackDelay -= Time.deltaTime;
             if (currentAttackDelay <= 0)
             {
+                statusRenderer.color = new Color(1, 1, 1);
                 isAttacking = false;
                 if (targetType == TargetType.PLAYER)
                 {
                     Debug.Log("Attack!");
+                    Debug.Log((PlayerMovement.Instance.transform.position - transform.position).magnitude);
+                    if ((PlayerMovement.Instance.transform.position - transform.position).magnitude <= 1.5)
+                    {
+                        UI.instance.Retry();
+                    }
                 }
                 else
                 {
@@ -144,10 +150,11 @@ public class Enemy : MonoBehaviour
                     agent.SetDestination(target.position);
                 }
 
-                if (Vector3.Distance(target.position, transform.position) <= 1 && !isAttacking)
+                if (Vector3.Distance(target.position, transform.position) <= 1.5 && !isAttacking)
                 {
                     // Start Attack
                     isAttacking = true;
+                    statusRenderer.color = new Color(1, 0, 0);
                     if (targetType == TargetType.PLAYER)
                     {
                         currentAttackDelay = attackDelay;
