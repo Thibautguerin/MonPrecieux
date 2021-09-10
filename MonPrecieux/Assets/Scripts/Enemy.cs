@@ -368,42 +368,38 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log(collision.GetType());
-        if (collision is CapsuleCollider2D)
-        {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, (collision.transform.position + Vector3.up - transform.position).normalized, 10f, detectionMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, (collision.transform.position + Vector3.up - transform.position).normalized, 10f, detectionMask);
 
-            if (hit.collider != null)
+        if (hit.collider != null)
+        {
+            //Debug.Log(hit.collider.gameObject.name);
+            if (hit.collider.CompareTag("Player") && collision.CompareTag("Player") && (!focusTarget || targetType == TargetType.PLAYER))
             {
-                //Debug.Log(hit.collider.gameObject.name);
-                if (hit.collider.CompareTag("Player") && collision.CompareTag("Player") && (!focusTarget || targetType == TargetType.PLAYER))
-                {
-                    targetType = TargetType.PLAYER;
-                    target = collision.transform;
-                    canLoseFocus = false;
-                    currentLoseFocusDuration = Random.Range(loseFocusDurationMin, loseFocusDurationMax);
-                    focusTarget = true;
-                    agent.speed = chaseSpeed;
-                    statusRenderer.sprite = spriteFocusPlayer;
-                }
-                /*else if (hit.collider.CompareTag("Torch") && collision.CompareTag("Torch"))
-                {
-                    targetType = TargetType.TORCH;
-                    target = collision.transform;
-                    canLoseFocus = false;
-                    currentLoseFocusDuration = Random.Range(loseFocusDurationMin, loseFocusDurationMax);
-                    focusTarget = true;
-                    agent.speed = chaseSpeed;
-                    statusRenderer.sprite = spriteFocusPlayer;
-                }*/
+                targetType = TargetType.PLAYER;
+                target = collision.transform;
+                canLoseFocus = false;
+                currentLoseFocusDuration = Random.Range(loseFocusDurationMin, loseFocusDurationMax);
+                focusTarget = true;
+                agent.speed = chaseSpeed;
+                statusRenderer.sprite = spriteFocusPlayer;
             }
+            /*else if (hit.collider.CompareTag("Torch") && collision.CompareTag("Torch"))
+            {
+                targetType = TargetType.TORCH;
+                target = collision.transform;
+                canLoseFocus = false;
+                currentLoseFocusDuration = Random.Range(loseFocusDurationMin, loseFocusDurationMax);
+                focusTarget = true;
+                agent.speed = chaseSpeed;
+                statusRenderer.sprite = spriteFocusPlayer;
+            }*/
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision is CapsuleCollider2D && ((!focusTarget && collision.CompareTag("Player"))
-            || (targetType == TargetType.PLAYER && collision.CompareTag("Torch"))))
+        if ((!focusTarget && collision.CompareTag("Player"))
+            || (targetType == TargetType.PLAYER && collision.CompareTag("Torch")))
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, (collision.transform.position + Vector3.up - transform.position).normalized);
 
@@ -436,8 +432,8 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision is CapsuleCollider2D && ((collision.CompareTag("Player") && targetType == TargetType.PLAYER)
-            || (collision.CompareTag("Torch") && targetType == TargetType.TORCH)))
+        if ((collision.CompareTag("Player") && targetType == TargetType.PLAYER)
+            || (collision.CompareTag("Torch") && targetType == TargetType.TORCH))
         {
             canLoseFocus = true;
             statusRenderer.sprite = spriteLosePlayer;

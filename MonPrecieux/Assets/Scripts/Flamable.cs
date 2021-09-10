@@ -93,12 +93,8 @@ class Flamable : MonoBehaviour
         if (collision is CircleCollider2D && !collision.transform.CompareTag("Torch"))
         {
             Flamable obj = collision.gameObject.GetComponent<Flamable>();
-            /*Debug.Log(obj);
-            Debug.Log(isBurning);
-            Debug.Log(obj.isBurning);*/
             if (obj && !isBurning && obj.isBurning && obj.timer >= 1 && obj.timer <= 2)
             {
-                //Debug.Log("HDUZHUD");
                 timer = timeToBurn;
                 isBurning = true;
                 if (audioSource && fireSound)
@@ -117,7 +113,6 @@ class Flamable : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Debug.Log(collision.GetType());
         if (collision.collider is BoxCollider2D || (collision.collider is CircleCollider2D && collision.transform.CompareTag("Torch")))
         {
             Flamable obj = collision.gameObject.GetComponent<Flamable>();

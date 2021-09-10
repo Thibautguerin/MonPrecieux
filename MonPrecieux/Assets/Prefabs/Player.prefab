@@ -196,8 +196,8 @@ GameObject:
   - component: {fileID: 9164414808982494718}
   - component: {fileID: 8754609387826331784}
   m_Layer: 0
-  m_Name: Trigger
-  m_TagString: Untagged
+  m_Name: PlayerTrigger
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -429,7 +429,7 @@ MonoBehaviour:
   - {x: -0.35552835, y: 0.18165183, z: 0}
   m_ShapePathHash: -235688131
   m_Mesh: {fileID: 0}
-  m_InstanceId: 337636
+  m_InstanceId: 126844
 --- !u!114 &2312003
 MonoBehaviour:
   m_ObjectHideFlags: 0
