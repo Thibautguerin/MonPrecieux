@@ -31,7 +31,7 @@ public class Object_Controller : MonoBehaviour
         useGravity = true;
 
         //Ignore collision with player
-        Physics2D.IgnoreLayerCollision(6, 7);
+        //Physics2D.IgnoreLayerCollision(6, 7);
     }
 
     public void Setup(Vector3 vector3, Vector2 vector2)
@@ -59,7 +59,7 @@ public class Object_Controller : MonoBehaviour
         //Stop rebond
         else if (transform.position.z >= -1.09f)
         {
-            Physics2D.IgnoreLayerCollision(6, 7, false);
+            //Physics2D.IgnoreLayerCollision(6, 7, false);
             canPickUp = true;
             useGravity = false;
             transform.position = new Vector3(transform.position.x, transform.position.y, -1.08f);

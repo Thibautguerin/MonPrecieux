@@ -130,7 +130,7 @@ public class Enemy : MonoBehaviour
                 {
                     //Debug.Log("Attack!");
                     //Debug.Log((PlayerMovement.Instance.transform.position - transform.position).magnitude);
-                    if ((PlayerMovement.Instance.transform.position - transform.position).magnitude <= 1.5)
+                    if ((PlayerMovement.Instance.transform.position - transform.position).magnitude <= 1)
                     {
                         UI.instance.Retry();
                     }
@@ -150,7 +150,7 @@ public class Enemy : MonoBehaviour
                     agent.SetDestination(target.position);
                 }
 
-                if (Vector3.Distance(target.position, transform.position) <= 1.5 && !isAttacking)
+                if (Vector3.Distance(target.position, transform.position) <= 1 && !isAttacking)
                 {
                     // Start Attack
                     isAttacking = true;
