@@ -90,9 +90,19 @@ class UI : MonoBehaviour
     public void Quit() { Application.Quit(); }
     public void StartLevel(string name)
     {
-        SceneManager.LoadScene(name);
-        GameManager.instance.isDone = false;
-        GameManager.instance.hasBurned = 0;
-        GameManager.instance.T_Perc.SetText("{0:0}%", 0);
+        if (name == "Menu")
+        {
+            Menu();
+            GameManager.instance.isDone = false;
+            GameManager.instance.hasBurned = 0;
+            GameManager.instance.T_Perc.SetText("{0:0}%", 0);
+        }
+        else
+        {
+            SceneManager.LoadScene(name);
+            GameManager.instance.isDone = false;
+            GameManager.instance.hasBurned = 0;
+            GameManager.instance.T_Perc.SetText("{0:0}%", 0);
+        }
     }
 }
