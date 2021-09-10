@@ -45,6 +45,40 @@ public class Lauch_Object : MonoBehaviour
             Instantiate(torchPrefab, transform.parent, true).GetComponent<Object_Controller>().Setup(v3Pos.normalized, pointer.transform.position);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Parent == Object
+        if (collision.transform.CompareTag("Torch"))
+        {
+            //Debug.Log("1");
+            //If Object stop bouncing, canPickUp == true
+            if (collision.gameObject.GetComponent<Object_Controller>().canPickUp)
+            {
+                getTorch = true;
+                PlayerMovement.Instance.getTorch = true;
+                Destroy(collision.gameObject);
+                switch (PlayerMovement.Instance.spriteOrientation)
+                {
+                    case SpriteOrientation.SIDE:
+                        PlayerMovement.Instance.spriteRenderer.sprite = PlayerMovement.Instance.lookBottomRightTorch;
+                        PlayerMovement.Instance.torchLightSide.SetActive(true);
+                        break;
+                    case SpriteOrientation.BOTTOM:
+                        PlayerMovement.Instance.spriteRenderer.sprite = PlayerMovement.Instance.lookBottomTorch;
+                        PlayerMovement.Instance.torchLightBottom.SetActive(true);
+                        break;
+                    case SpriteOrientation.TOP:
+                        PlayerMovement.Instance.spriteRenderer.sprite = PlayerMovement.Instance.lookTopTorch;
+                        PlayerMovement.Instance.torchLightTop.SetActive(true);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Parent == Object
