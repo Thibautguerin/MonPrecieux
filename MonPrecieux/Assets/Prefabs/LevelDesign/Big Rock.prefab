@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4355473954846909626}
   - component: {fileID: 4355473954846909620}
   - component: {fileID: 6391561360076983709}
-  - component: {fileID: 933098113253020357}
   - component: {fileID: -6017779482704264729}
   - component: {fileID: 7498770058829609212}
   m_Layer: 0
@@ -129,25 +128,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.56}
   serializedVersion: 2
   m_Radius: 1.35
---- !u!114 &933098113253020357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4355473954846909623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f2c4a59311a8c64991b230f0e17f870, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToBurn: 5
-  itsTheTorch: 0
-  fireParticle: {fileID: 3542513724633365298, guid: ed90d01a4ab507346a698f0c14a604a6, type: 3}
-  ashesPrefab: {fileID: 1183739005991505985, guid: 1b51460f50585a040a3f321a70d3d357, type: 3}
-  objectAshesSprite: {fileID: 21300000, guid: 8dfb1661af69c8f48886c864aaf9b99a, type: 3}
-  fireSound: {fileID: 8300000, guid: 0222640e9ab21744b9971f1743eabaf2, type: 3}
-  isBurning: 0
 --- !u!114 &-6017779482704264729
 MonoBehaviour:
   m_ObjectHideFlags: 0
