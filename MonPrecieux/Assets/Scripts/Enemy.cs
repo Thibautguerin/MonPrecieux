@@ -408,7 +408,7 @@ public class Enemy : MonoBehaviour
         if ((!focusTarget && collision.CompareTag("Player"))
             || (targetType == TargetType.PLAYER && collision.CompareTag("Torch")))
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, (collision.transform.position + Vector3.up - transform.position).normalized);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, (collision.transform.position + Vector3.up - transform.position).normalized, 10f, detectionMask);
 
             if (hit.collider != null)
             {
