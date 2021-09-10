@@ -15,7 +15,7 @@ public class Lauch_Object : MonoBehaviour
         //Player position
         Vector2 v2Pos = new Vector2(transform.position.x, transform.position.y);
         //Press Left Click == Launch
-        if (Input.GetButtonDown("Fire1") && getTorch)
+        if ((Input.GetButtonDown("Fire1") || Input.GetAxis("RT") > 0) && getTorch)
         {
             getTorch = false;
             PlayerMovement.Instance.getTorch = false;
