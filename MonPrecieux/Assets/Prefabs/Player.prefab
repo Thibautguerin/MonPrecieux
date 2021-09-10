@@ -238,6 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 020ab177c2108254486f6c3179782dcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointer: {fileID: 1946075141}
+  isMouseEnabled: 1
   speed: 5
   lookBottomRight: {fileID: 21300000, guid: 12e352966b99bdb44b8a84987af6143e, type: 3}
   lookBottomRightTorch: {fileID: 21300000, guid: 0dbbc349825d8db41b01f7ac8951d641, type: 3}
@@ -379,7 +381,7 @@ MonoBehaviour:
   - {x: -0.35552835, y: 0.18165183, z: 0}
   m_ShapePathHash: -235688131
   m_Mesh: {fileID: 0}
-  m_InstanceId: 139528
+  m_InstanceId: 244918
 --- !u!114 &2312003
 MonoBehaviour:
   m_ObjectHideFlags: 0
