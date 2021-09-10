@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4355473954846909626}
   - component: {fileID: 4355473954846909620}
   - component: {fileID: -6017779482704264729}
+  - component: {fileID: 6214095027046391794}
   m_Layer: 0
   m_Name: Statue
   m_TagString: Untagged
@@ -126,3 +127,32 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &6214095027046391794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4355473954846909623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 356af804
+  m_ShapePath:
+  - {x: -0.6392336, y: 0.23588663, z: 0}
+  - {x: -0.4837222, y: 0.026708245, z: 0}
+  - {x: -0.035537243, y: -0.03226334, z: 0}
+  - {x: 0.37975883, y: 0.047177374, z: 0}
+  - {x: 0.44803095, y: 0.2979778, z: 0}
+  - {x: 0.06131172, y: 0.38631815, z: 0}
+  - {x: -0.35616922, y: 0.4099068, z: 0}
+  m_ShapePathHash: -772969561
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -222280
