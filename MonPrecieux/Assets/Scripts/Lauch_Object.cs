@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Lauch_Object : MonoBehaviour
 {
     public GameObject torchPrefab;
     private bool getTorch = true;
-
     // Update is called once per frame
     void Update()
     {
@@ -14,19 +12,15 @@ public class Lauch_Object : MonoBehaviour
         Vector3 v3Pos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
         v3Pos = Camera.main.ScreenToWorldPoint(v3Pos);
         v3Pos -= transform.position;
-
         //Player position
         Vector2 v2Pos = new Vector2(transform.position.x, transform.position.y);
-
         //Press Left Click == Launch
-        if (Input.GetMouseButtonDown(0) && getTorch)
+        if (Input.GetButtonDown("Fire1") && getTorch)
         {
             getTorch = false;
             PlayerMovement.Instance.getTorch = false;
-
             // Play sound
             PlayerMovement.Instance.PlayThrowTorchSound();
-
             switch (PlayerMovement.Instance.spriteOrientation)
             {
                 case SpriteOrientation.SIDE:
@@ -44,7 +38,6 @@ public class Lauch_Object : MonoBehaviour
                 default:
                     break;
             }
-
             Instantiate(torchPrefab, transform.parent, true).GetComponent<Object_Controller>().Setup(v3Pos.normalized, v2Pos);
         }
     }
@@ -60,7 +53,6 @@ public class Lauch_Object : MonoBehaviour
                 getTorch = true;
                 PlayerMovement.Instance.getTorch = true;
                 Destroy(collision.gameObject);
-
                 switch (PlayerMovement.Instance.spriteOrientation)
                 {
                     case SpriteOrientation.SIDE:
@@ -80,7 +72,5 @@ public class Lauch_Object : MonoBehaviour
                 }
             }
         }
-
     }
-
 }
