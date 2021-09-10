@@ -5,7 +5,12 @@ public class Lauch_Object : MonoBehaviour
 {
     public GameObject torchPrefab;
     public GameObject pointer;
+    public Transform Rotator;
     private bool getTorch = true;
+    private void Start()
+    {
+        Rotator = gameObject.GetComponentInChildren<Transform>();
+    }
     void Update()
     {
         //Mouse position
@@ -37,7 +42,7 @@ public class Lauch_Object : MonoBehaviour
                 default:
                     break;
             }
-            Instantiate(torchPrefab, transform.parent, true).GetComponent<Object_Controller>().Setup(v3Pos.normalized, v2Pos);
+            Instantiate(torchPrefab, transform.parent, true).GetComponent<Object_Controller>().Setup(v3Pos.normalized, pointer.transform.position);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
