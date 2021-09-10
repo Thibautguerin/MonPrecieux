@@ -75,9 +75,16 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        h = Input.GetAxis("Horizontal");
-        v = Input.GetAxis("Vertical");
-        if (!UI.instance.isPaused) orientation();
+        if (!GameManager.instance.isDone)
+        {
+            h = Input.GetAxis("Horizontal");
+            v = Input.GetAxis("Vertical");
+            if (!UI.instance.isPaused) orientation();
+        }
+        else
+        {
+            playerbody.velocity = Vector2.zero;
+        }
         Animation();
     }
     private void FixedUpdate()
@@ -271,4 +278,5 @@ public class PlayerMovement : MonoBehaviour
             audioSource.PlayOneShot(throwTorchSound, 1f);
         }
     }
+    void OnTriggerEnter2D(Collider2D other) { if (other.tag == "Finish") GameManager.instance.isDone = true; }
 }

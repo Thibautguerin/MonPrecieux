@@ -20,9 +20,8 @@ class PlayerCamera : MonoBehaviour
         if (!UI.instance.isMenued)
         {
             transform.position = Vector3.Lerp(transform.position, target.position + offset, movSpeed);
-            cam.orthographicSize = Input.GetButton("Jump") ?
-                cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, dezoomSize, zoomSpeed) :
-                cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, zoomSize, zoomSpeed);
+            if (Input.GetButton("Jump") || GameManager.instance.isDone) cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, dezoomSize, zoomSpeed);
+            else cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, zoomSize, zoomSpeed);
         }
     }
 }

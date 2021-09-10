@@ -67,6 +67,7 @@ class UI : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         isPaused = false;
+        GameManager.instance.isDone = false;
     }
     public void Play()
     {
@@ -78,7 +79,7 @@ class UI : MonoBehaviour
         isMenued = false;
         isHTP = false;
         showHTP = false;
-        SceneManager.LoadScene("1");
+        StartLevel("1");
     }
     public void Menu()
     {
@@ -87,4 +88,11 @@ class UI : MonoBehaviour
         isPaused = false;
     }
     public void Quit() { Application.Quit(); }
+    public void StartLevel(string name)
+    {
+        SceneManager.LoadScene(name);
+        GameManager.instance.isDone = false;
+        GameManager.instance.hasBurned = 0;
+        GameManager.instance.T_Perc.SetText("{0:0}%", 0);
+    }
 }

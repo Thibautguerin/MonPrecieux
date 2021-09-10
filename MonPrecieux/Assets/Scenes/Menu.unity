@@ -294,6 +294,10 @@ PrefabInstance:
       propertyPath: T_Perc
       value: 
       objectReference: {fileID: 561181254}
+    - target: {fileID: 8218586557483791774, guid: 27b164088a0de644d98313cf87fcb4ef, type: 3}
+      propertyPath: endScreen
+      value: 
+      objectReference: {fileID: 4905797738689088184}
     - target: {fileID: 8867521589995674914, guid: 27b164088a0de644d98313cf87fcb4ef, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -501,6 +505,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b471876bb74d1f64d94a8de8c389f2c3, type: 3}
+--- !u!1 &4905797738689088184 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8188373468449000188, guid: b471876bb74d1f64d94a8de8c389f2c3, type: 3}
+  m_PrefabInstance: {fileID: 4905797738689088183}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6634893151471406521
 PrefabInstance:
   m_ObjectHideFlags: 0
