@@ -100,7 +100,7 @@ MonoBehaviour:
   movSpeed: 0.2
   zoomSpeed: 0.2
   zoomSize: 5
-  dezoomSize: 8
+  dezoomSize: 10
 --- !u!20 &5759504819244328020
 Camera:
   m_ObjectHideFlags: 0

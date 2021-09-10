@@ -37,10 +37,10 @@ class UI : MonoBehaviour
         L_Settings.SetActive(isSettinged);
         L_Credits.SetActive(isCredited);
         L_HTP.SetActive(isHTP);
-        if (!isMenued && !isSettinged && !isCredited && !isHTP && Input.GetKeyDown(KeyCode.Escape)) SwitchIsPaused();
-        if (isSettinged && Input.GetKeyDown(KeyCode.Escape)) SwitchIsSettinged();
-        if (isCredited && Input.GetKeyDown(KeyCode.Escape)) SwitchIsCredited();
-        if (isHTP && Input.GetKeyDown(KeyCode.Escape)) SwitchIsHTP();
+        if (!isMenued && !isSettinged && !isCredited && !isHTP && Input.GetButtonDown("Cancel")) SwitchIsPaused();
+        if (isSettinged && Input.GetButtonDown("Cancel")) SwitchIsSettinged();
+        if (isCredited && Input.GetButtonDown("Cancel")) SwitchIsCredited();
+        if (isHTP && Input.GetButtonDown("Cancel")) SwitchIsHTP();
         Toggle_Global.onValueChanged.AddListener(delegate { AudioManager.instance.isGlobalOn = Toggle_Global.isOn; });
         Toggle_Music.onValueChanged.AddListener(delegate { AudioManager.instance.isMusicOn = Toggle_Music.isOn; });
         Toggle_SFX.onValueChanged.AddListener(delegate { AudioManager.instance.isSfxOn = Toggle_SFX.isOn; });
