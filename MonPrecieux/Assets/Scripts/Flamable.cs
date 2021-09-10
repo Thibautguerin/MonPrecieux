@@ -25,6 +25,10 @@ class Flamable : MonoBehaviour
             audioSource = GetComponent<AudioSource>();
             sr = GetComponent<SpriteRenderer>();
         }
+        else
+        {
+            isBurning = true;
+        }
     }
 
     void Update()
@@ -62,36 +66,14 @@ class Flamable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.name);
-        // if (gameObject.transform.parent.CompareTag("Torch")) { Debug.Log(collision.name); }
-        /*Flamable obj = collision.GetComponent<Flamable>();
-        if (obj != null && hasBurned == false)
+        if (collision is CircleCollider2D && collision.CompareTag("Torch") && CompareTag("Carpet"))
         {
-            Debug.Log("C'est bon Trigger");
-            if (obj.isBurning == true)
+            Debug.Log(collision.gameObject.name);
+            Flamable obj = collision.gameObject.GetComponent<Flamable>();
+            if (obj && !isBurning && obj.isBurning)
             {
-                if (timer == 0)
-                {
-                    timer = timeToBurn;
-                }
+                timer = timeToBurn;
                 isBurning = true;
-                fire = Instantiate(prefab,
-                    new Vector3(transform.position.x,
-                        transform.position.y,
-                        transform.position.z),
-                    Quaternion.identity,
-                    gameObject.transform);
-            }
-        }*/
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Flamable obj = collision.gameObject.GetComponent<Flamable>();
-        if (obj != null && !isBurning)
-        {
-            if (obj.isBurning == true)
-            {
                 if (audioSource && fireSound)
                 {
                     audioSource.PlayOneShot(fireSound);
@@ -102,8 +84,57 @@ class Flamable : MonoBehaviour
                 {
                     fireScript.TurnOnLight();
                 }
+            }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision is CircleCollider2D && !collision.transform.CompareTag("Torch"))
+        {
+            Flamable obj = collision.gameObject.GetComponent<Flamable>();
+            /*Debug.Log(obj);
+            Debug.Log(isBurning);
+            Debug.Log(obj.isBurning);*/
+            if (obj && !isBurning && obj.isBurning && obj.timer >= 1 && obj.timer <= 2)
+            {
+                //Debug.Log("HDUZHUD");
                 timer = timeToBurn;
                 isBurning = true;
+                if (audioSource && fireSound)
+                {
+                    audioSource.PlayOneShot(fireSound);
+                }
+                fire = Instantiate(fireParticle, transform.position, Quaternion.identity, transform);
+                fireScript = fire.GetComponent<Fire>();
+                if (fireScript)
+                {
+                    fireScript.TurnOnLight();
+                }
+            }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //Debug.Log(collision.GetType());
+        if (collision.collider is BoxCollider2D || (collision.collider is CircleCollider2D && collision.transform.CompareTag("Torch")))
+        {
+            Flamable obj = collision.gameObject.GetComponent<Flamable>();
+            if (obj && !isBurning && obj.isBurning)
+            {
+                timer = timeToBurn;
+                isBurning = true;
+                if (audioSource && fireSound)
+                {
+                    audioSource.PlayOneShot(fireSound);
+                }
+                fire = Instantiate(fireParticle, transform.position, Quaternion.identity, transform);
+                fireScript = fire.GetComponent<Fire>();
+                if (fireScript)
+                {
+                    fireScript.TurnOnLight();
+                }
             }
         }
     }

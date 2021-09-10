@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2400153959459716012}
   - component: {fileID: 6691248255530162141}
   - component: {fileID: 8450327290355208716}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Torch
   m_TagString: Torch
   m_Icon: {fileID: 0}
@@ -159,6 +159,7 @@ MonoBehaviour:
   fireParticle: {fileID: 0}
   ashesPrefab: {fileID: 0}
   objectAshesSprite: {fileID: 0}
+  fireSound: {fileID: 0}
   isBurning: 1
 --- !u!1 &6243809373235053995
 GameObject:
@@ -170,7 +171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6243809373235053994}
   - component: {fileID: 6243809373235053993}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
