@@ -128,8 +128,8 @@ public class Enemy : MonoBehaviour
                 isAttacking = false;
                 if (targetType == TargetType.PLAYER)
                 {
-                    Debug.Log("Attack!");
-                    Debug.Log((PlayerMovement.Instance.transform.position - transform.position).magnitude);
+                    //Debug.Log("Attack!");
+                    //Debug.Log((PlayerMovement.Instance.transform.position - transform.position).magnitude);
                     if ((PlayerMovement.Instance.transform.position - transform.position).magnitude <= 1.5)
                     {
                         UI.instance.Retry();
@@ -137,7 +137,7 @@ public class Enemy : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Turn off the torch!");
+                    //Debug.Log("Turn off the torch!");
                 }
             }
         }
