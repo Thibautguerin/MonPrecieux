@@ -68,6 +68,8 @@ class UI : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         isPaused = false;
         GameManager.instance.isDone = false;
+        GameManager.instance.hasBurned = 0;
+        GameManager.instance.T_Perc.SetText("{0:0}%", 0);
     }
     public void Play()
     {
@@ -79,7 +81,7 @@ class UI : MonoBehaviour
         isMenued = false;
         isHTP = false;
         showHTP = false;
-        StartLevel("1");
+        StartNext();
     }
     public void Menu()
     {
@@ -88,21 +90,28 @@ class UI : MonoBehaviour
         isPaused = false;
     }
     public void Quit() { Application.Quit(); }
-    public void StartLevel(string name)
+    public void StartNext()
     {
-        if (name == "Menu")
+        GameManager.instance.isDone = false;
+        GameManager.instance.hasBurned = 0;
+        GameManager.instance.T_Perc.SetText("{0:0}%", 0);
+        switch (SceneManager.GetActiveScene().name)
         {
-            Menu();
-            GameManager.instance.isDone = false;
-            GameManager.instance.hasBurned = 0;
-            GameManager.instance.T_Perc.SetText("{0:0}%", 0);
-        }
-        else
-        {
-            SceneManager.LoadScene(name);
-            GameManager.instance.isDone = false;
-            GameManager.instance.hasBurned = 0;
-            GameManager.instance.T_Perc.SetText("{0:0}%", 0);
+            case "Menu":
+                SceneManager.LoadScene("1");
+                break;
+            case "1":
+                SceneManager.LoadScene("2");
+                break;
+            case "2":
+                SceneManager.LoadScene("3");
+                break;
+            case "3":
+                SceneManager.LoadScene("4");
+                break;
+            case "4":
+                Menu();
+                break;
         }
     }
 }
